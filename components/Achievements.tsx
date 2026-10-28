@@ -25,7 +25,7 @@ export default function Achievements() {
   return (
     <section className="py-20 sm:py-24 md:py-28 lg:py-[130px]">
       <div className="wrap grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_582px] lg:items-center lg:gap-12">
-        <div>
+        <div data-reveal>
           <p className="eyebrow">Achievements</p>
           <h2 className="mt-5 text-[56px] font-extrabold leading-[0.98] tracking-[-0.035em] text-blue-950 sm:text-[80px] md:mt-6 lg:text-[92px] xl:text-[104px]">
             Milestones <br />
@@ -37,7 +37,7 @@ export default function Achievements() {
         </div>
         <div className="grid grid-cols-1 gap-[21px] sm:grid-cols-2">
           {items.map((i) => (
-            <div key={i.tag} className="rounded-[20px] bg-neutral-50 px-[26px] pb-7 pt-7">
+            <div key={i.tag} data-reveal className="rounded-[20px] bg-neutral-50 px-[26px] pb-7 pt-7">
               <div className="h-[3px] w-8 rounded-full bg-gold-500" />
               <p className="eyebrow mt-5 !text-[11px]">{i.tag}</p>
               <p className="mt-3 text-[24px] font-semibold leading-[1.18] tracking-[-0.01em] text-blue-950 lg:text-[28px]">

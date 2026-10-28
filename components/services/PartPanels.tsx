@@ -19,13 +19,14 @@ export function FormationPart({ onExplore }: { onExplore: () => void }) {
       <div className="panel relative w-full overflow-hidden bg-[linear-gradient(160deg,#0e1838_0%,#0c1430_100%)]">
         <p
           aria-hidden="true"
+          data-parallax="10"
           className="pointer-events-none absolute left-[40%] select-none font-extrabold leading-none tracking-[-0.05em] text-blue-800/30"
           style={{ fontSize: "clamp(220px, 29vw, 420px)", top: "-0.42em" }}
         >
           01
         </p>
         <div className="panel-inner relative grid grid-cols-1 items-center gap-12 py-16 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,594px)] lg:gap-14 lg:py-[88px]">
-          <div>
+          <div data-reveal>
             <Eyebrow tone="gold">Part 01 of 02 · Business Formation</Eyebrow>
             <h2 className="mt-5 text-[40px] font-bold leading-[1.04] tracking-[-0.03em] text-white sm:text-[52px] lg:text-[60px] xl:text-[64px]">
               Business Formation
@@ -47,6 +48,7 @@ export function FormationPart({ onExplore }: { onExplore: () => void }) {
             </button>
           </div>
           <ImagePlaceholder
+            reveal
             caption="Founder and consultant reviewing company formation documents in a Dubai office"
             className="h-[360px] sm:h-[440px] lg:h-[520px]"
           />
@@ -68,6 +70,7 @@ export function LicensingPart({ onExplore }: { onExplore: () => void }) {
       <div className="panel relative w-full overflow-hidden bg-neutral-50">
         <p
           aria-hidden="true"
+          data-parallax="10"
           className="pointer-events-none absolute right-[-0.08em] select-none font-extrabold leading-none tracking-[-0.05em] text-neutral-100"
           style={{ fontSize: "clamp(220px, 29vw, 420px)", top: "-0.3em" }}
         >
@@ -76,10 +79,11 @@ export function LicensingPart({ onExplore }: { onExplore: () => void }) {
         <div className="panel-inner relative pb-16 pt-16 sm:pt-20 lg:pb-[86px] lg:pt-[87px]">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,560px)_minmax(0,1fr)] lg:gap-16">
             <ImagePlaceholder
+              reveal
               caption="Business owner reviewing a renewed trade licence with a Builtpulse advisor"
               className="order-2 h-[320px] sm:h-[400px] lg:order-1 lg:h-[440px]"
             />
-            <div className="order-1 lg:order-2">
+            <div data-reveal className="order-1 lg:order-2">
               <Eyebrow>Part 02 of 02 · Business Licensing</Eyebrow>
               <h2 className="mt-5 text-[40px] font-bold leading-[1.04] tracking-[-0.03em] text-blue-950 sm:text-[52px] lg:text-[60px] xl:text-[64px]">
                 Business Licensing
@@ -100,8 +104,9 @@ export function LicensingPart({ onExplore }: { onExplore: () => void }) {
               <button
                 key={title}
                 type="button"
+                data-reveal
                 onClick={onExplore}
-                className="group flex flex-col items-start justify-start rounded-[16px] border border-neutral-100 bg-white p-6 text-left transition hover:border-gold-500/50 hover:shadow-soft lg:p-7"
+                className="group flex flex-col items-start justify-start rounded-[16px] border border-neutral-100 bg-white p-6 text-left transition-[border-color,box-shadow] hover:border-gold-500/50 hover:shadow-soft lg:p-7"
               >
                 <span className="grid h-[52px] w-[52px] place-items-center rounded-[12px] bg-blue-950 text-gold-500">
                   <Icon className="h-[22px] w-[22px]" />

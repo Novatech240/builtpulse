@@ -127,7 +127,7 @@ export default function Services() {
         </div>
 
         <div className="panel-inner relative pb-16 pt-16 sm:pb-20 sm:pt-20 md:pb-24 lg:pb-[100px] lg:pt-[110px]">
-          <div>
+          <div data-reveal>
             <p className="eyebrow-gold">Services</p>
             <h2 className="h2-display mt-5 text-white md:mt-6">
               Twelve service lines.<br /><span className="text-gold-500">One connected system.</span>
@@ -166,7 +166,7 @@ export default function Services() {
 
 function GroupLabel({ label, note, className = "" }: { label: string; note: string; className?: string }) {
   return (
-    <div className={`flex items-center gap-3 sm:gap-5 ${className}`}>
+    <div data-reveal className={`flex items-center gap-3 sm:gap-5 ${className}`}>
       <span className="eyebrow-gold shrink-0 !text-[11px]">{label}</span>
       <span className="h-px flex-1 bg-white/15" />
       <span className="hidden shrink-0 text-[13px] text-white/70 md:inline">{note}</span>
@@ -209,7 +209,7 @@ function FeaturedCard({ service, className = "" }: { service: Service; className
   }[service.tone];
 
   return (
-    <div className={`group relative overflow-hidden rounded-[22px] sm:rounded-[26px] ${tone.bg} ${className}`}>
+    <div data-reveal className={`group relative overflow-hidden rounded-[22px] sm:rounded-[26px] ${tone.bg} ${className}`}>
       {/* Notch tab */}
       <div className="absolute right-0 top-0 flex h-[44px] items-center gap-2 rounded-bl-[20px] bg-brand-dark px-5 sm:h-[55px] sm:gap-2.5 sm:px-[30px]">
         <span className="h-2 w-2 rounded-full bg-gold-500" />
@@ -254,7 +254,7 @@ function FeaturedCard({ service, className = "" }: { service: Service; className
 
 function SmallCard({ n, title, desc }: { n: string; title: string; desc: string }) {
   return (
-    <div className="group relative overflow-hidden rounded-[20px] bg-white p-6 shadow-soft transition hover:shadow-card sm:rounded-[22px] lg:p-[26px]">
+    <div data-reveal className="group relative overflow-hidden rounded-[20px] bg-white p-6 shadow-soft transition-shadow hover:shadow-card sm:rounded-[22px] lg:p-[26px]">
       {/* Notch tab */}
       <div className="absolute right-0 top-0 grid h-[52px] w-[80px] place-items-center rounded-bl-[18px] bg-brand-dark sm:h-[58px] sm:w-[90px]">
         <span className="grid h-[30px] w-[30px] place-items-center rounded-full border border-white/80 text-white transition group-hover:rotate-90 sm:h-[34px] sm:w-[34px]">

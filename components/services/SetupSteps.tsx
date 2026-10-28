@@ -33,7 +33,7 @@ const Dot = ({ className = "" }: { className?: string }) => (
 function Serpentine() {
   return (
     <div className="mx-3">
-      <div className="pb-4 pl-[62px]">
+      <div data-reveal className="pb-4 pl-[62px]">
         <StepText i={0} />
       </div>
       {[1, 2, 3, 4, 5].map((i) => {
@@ -41,6 +41,7 @@ function Serpentine() {
         return (
           <div
             key={i}
+            data-reveal
             className={`relative -mt-[2px] flex h-[151px] items-center border-y-2 border-gold-500 first:mt-0 ${
               right
                 ? "ml-[75px] justify-end rounded-r-full border-r-2 pr-[35px]"
@@ -54,7 +55,7 @@ function Serpentine() {
           </div>
         );
       })}
-      <div className="pl-[62px] pt-6">
+      <div data-reveal className="pl-[62px] pt-6">
         <StepText i={6} />
       </div>
     </div>
@@ -65,7 +66,7 @@ function Vertical() {
   return (
     <ol className="relative ml-2 border-l-2 border-gold-500 pl-7">
       {steps.map((_, i) => (
-        <li key={i} className="relative pb-8 last:pb-0">
+        <li key={i} data-reveal className="relative pb-8 last:pb-0">
           <Dot className="-left-[38px] top-0" />
           <StepText i={i} />
         </li>
@@ -80,20 +81,23 @@ export default function SetupSteps() {
       <div className="panel w-full bg-neutral-50">
         <div className="panel-inner grid grid-cols-1 gap-12 py-16 sm:py-20 lg:grid-cols-[minmax(0,500px)_minmax(0,1fr)] lg:gap-[72px] lg:py-[111px]">
           <ImagePlaceholder
+            reveal
             caption="Builtpulse consultant guiding a client through each setup step (process visual)"
             className="order-2 h-[360px] lg:order-1 lg:h-auto lg:min-h-full"
           />
           <div className="order-1 lg:order-2">
-            <Eyebrow>How it works</Eyebrow>
-            <h2 className="mt-5 text-[38px] font-semibold leading-[1.06] tracking-[-0.03em] text-blue-950 sm:text-[48px] lg:text-[54px]">
-              Your company setup,
-              <br />
-              <span className="text-gold-500">step by step.</span>
-            </h2>
-            <p className="mt-5 max-w-[660px] text-[16px] leading-[1.65] text-neutral-600 lg:text-[17px]">
-              A clear, structured path from your first conversation to a licensed, fully established company. Builtpulse
-              manages each stage and keeps you updated along the way.
-            </p>
+            <div data-reveal>
+              <Eyebrow>How it works</Eyebrow>
+              <h2 className="mt-5 text-[38px] font-semibold leading-[1.06] tracking-[-0.03em] text-blue-950 sm:text-[48px] lg:text-[54px]">
+                Your company setup,
+                <br />
+                <span className="text-gold-500">step by step.</span>
+              </h2>
+              <p className="mt-5 max-w-[660px] text-[16px] leading-[1.65] text-neutral-600 lg:text-[17px]">
+                A clear, structured path from your first conversation to a licensed, fully established company. Builtpulse
+                manages each stage and keeps you updated along the way.
+              </p>
+            </div>
             <div className="mt-10">
               <div className="hidden md:block">
                 <Serpentine />

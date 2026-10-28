@@ -33,12 +33,12 @@ export default function SeniorCTA({
             Speak with a senior business consultant
           </p>
 
-          <h2 className={`mt-6 text-balance font-extrabold leading-[0.95] tracking-[-0.045em] text-blue-950 md:mt-8 ${titleClassName}`}>
+          <h2 data-reveal className={`mt-6 text-balance font-extrabold leading-[0.95] tracking-[-0.045em] text-blue-950 md:mt-8 ${titleClassName}`}>
             {title}{" "}
             <ArrowRight className="inline-block h-[0.8em] w-[0.8em] -translate-y-[0.04em] [&_path]:stroke-[2.6]" />
           </h2>
 
-          <div className="mt-8 flex flex-col items-start justify-between gap-6 border-t border-blue-950/25 pt-7 md:mt-10 md:flex-row md:items-center md:pt-8">
+          <div data-reveal className="mt-8 flex flex-col items-start justify-between gap-6 border-t border-blue-950/25 pt-7 md:mt-10 md:flex-row md:items-center md:pt-8">
             <p className="max-w-[500px] text-[16px] leading-[1.6] text-blue-950 sm:text-[18px] lg:text-[20px]">
               {body}
             </p>

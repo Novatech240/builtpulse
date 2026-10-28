@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useRef, type ReactNode } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ArrowRight } from "../Icons";
 import { Close } from "./icons";
 
@@ -23,6 +25,25 @@ export function Modal({
   widthClass?: string;
 }) {
   const dialogRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // Entrance: backdrop fades, panel rises. Re-runs each time the modal opens; skipped for reduced motion.
+  useGSAP(
+    () => {
+      if (!open) return;
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.fromTo("[data-modal-backdrop]", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25, ease: "power1.out" });
+        gsap.fromTo(
+          dialogRef.current,
+          { autoAlpha: 0, y: 40, scale: 0.98 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }
+        );
+      });
+      return () => mm.revert();
+    },
+    { dependencies: [open], scope: rootRef, revertOnUpdate: true }
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -43,8 +64,9 @@ export function Modal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6">
+    <div ref={rootRef} className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6">
       <div
+        data-modal-backdrop
         className="absolute inset-0 bg-[rgba(12,19,51,0.72)] backdrop-blur-[2px]"
         onClick={onClose}
         aria-hidden="true"

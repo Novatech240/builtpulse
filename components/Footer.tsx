@@ -50,14 +50,14 @@ export default function Footer() {
             <span className="h-2 w-2 rounded-full bg-gold-500" />
             <span className="text-[13px] font-medium text-white">Get started</span>
           </span>
-          <h2 className="h2-light mx-auto mt-5 max-w-[800px] text-white md:mt-6">
+          <h2 data-reveal className="h2-light mx-auto mt-5 max-w-[800px] text-white md:mt-6">
             Ready to build your business <br className="hidden sm:block" />
             <span className="text-gold-500">in Dubai</span>?
           </h2>
-          <p className="mx-auto mt-5 max-w-[530px] text-[16px] leading-[1.6] text-white/75 lg:text-[17px]">
+          <p data-reveal className="mx-auto mt-5 max-w-[530px] text-[16px] leading-[1.6] text-white/75 lg:text-[17px]">
             Tell us where you are today — we&rsquo;ll map the setup, services and compliance steps you need next.
           </p>
-          <div className="mt-7 flex flex-col items-center gap-3.5">
+          <div data-reveal className="mt-7 flex flex-col items-center gap-3.5">
             <a href="#audit" className="btn-primary h-[52px] py-0">
               Book a Business Audit
               <ArrowRight className="h-4 w-4" />
@@ -69,7 +69,7 @@ export default function Footer() {
         </div>
 
         {/* Footer columns */}
-        <div className="panel-inner relative grid grid-cols-1 gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-4 lg:pb-14 xl:grid-cols-[300px_150px_190px_250px_276px] xl:justify-between xl:gap-x-4">
+        <div data-reveal className="panel-inner relative grid grid-cols-1 gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-4 lg:pb-14 xl:grid-cols-[300px_150px_190px_250px_276px] xl:justify-between xl:gap-x-4">
           <div className="sm:col-span-2 lg:col-span-4 xl:col-span-1">
             <Image
               src="/brand/builtpulse-logo-white-lg.png"

@@ -7,7 +7,7 @@ export default function LogoMarquee() {
   return (
     <section className="pb-20 pt-16 lg:pb-[100px] lg:pt-[95px]">
       <div className="wrap grid grid-cols-1 gap-8 lg:grid-cols-[300px_minmax(0,1fr)] lg:items-center lg:gap-10">
-        <div>
+        <div data-reveal>
           <Eyebrow>Trusted network</Eyebrow>
           <h3 className="mt-3 text-[26px] font-semibold leading-[1.15] tracking-[-0.02em] text-blue-950 sm:text-[28px]">
             Businesses build <br className="hidden lg:block" />
@@ -17,7 +17,7 @@ export default function LogoMarquee() {
             Fictional demo wordmarks — not real clients. Replace with approved logos.
           </p>
         </div>
-        <div className="group relative overflow-hidden mask-fade-edges">
+        <div data-reveal className="group relative overflow-hidden mask-fade-edges">
           <ul className="marquee-track flex w-max items-center gap-14 group-hover:[animation-play-state:paused]" style={{ animationDuration: "30s" }}>
             {loop.map((n, i) => (
               <li key={`${n}-${i}`} aria-hidden={i >= names.length} className="flex items-center gap-3 whitespace-nowrap">
