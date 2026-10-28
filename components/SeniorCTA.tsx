@@ -7,15 +7,17 @@ export default function SeniorCTA({
   cta = "Book a Call With a Senior Consultant",
   note = "Scheduling link — configurable (e.g. booking calendar URL)",
   titleClassName = "max-w-[1100px] text-[48px] sm:text-[72px] md:text-[96px] lg:text-[112px] xl:text-[124px]",
+  sectionClassName = "pb-2 pt-3 sm:pb-3 sm:pt-5 md:pb-4 md:pt-8",
 }: {
   title?: ReactNode;
   body?: string;
   cta?: string;
   note?: string | null;
   titleClassName?: string;
+  sectionClassName?: string;
 }) {
   return (
-    <section className="section pb-2 pt-3 sm:pb-3 sm:pt-5 md:pb-4 md:pt-8">
+    <section className={`section ${sectionClassName}`}>
       <div className="panel relative w-full overflow-hidden bg-gold-500">
         {/* orbit lines (dark on gold), centred near the top-right corner */}
         {[824, 560, 300].map((d) => (
