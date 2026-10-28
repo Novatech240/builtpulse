@@ -8,6 +8,7 @@ type Service = {
   summary: string;
   bullets: string[];
   tone: "light" | "gold" | "blue";
+  href?: string;
 };
 
 const featured: Service[] = [
@@ -25,6 +26,7 @@ const featured: Service[] = [
       "Amendments, renewal & liquidation",
     ],
     tone: "light",
+    href: "/services/business-formation-licensing",
   },
   {
     n: "02",
@@ -238,7 +240,7 @@ function FeaturedCard({ service, className = "" }: { service: Service; className
         </ul>
 
         <div className={`mt-auto flex items-center justify-between pt-7 ${tone.explore}`}>
-          <a href="#audit" className="text-[14px] font-semibold sm:text-[15px]">
+          <a href={service.href ?? "#audit"} className={`text-[14px] font-semibold sm:text-[15px] ${service.href ? "after:absolute after:inset-0" : ""}`}>
             Explore service
           </a>
           <div className={`grid h-11 w-11 place-items-center rounded-full border transition group-hover:translate-x-1 ${tone.arrow}`}>

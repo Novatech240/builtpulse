@@ -11,6 +11,7 @@ type Stage = {
   copy: string;
   pills: string[];
   explore: string;
+  href?: string;
 };
 
 const stages: Stage[] = [
@@ -30,6 +31,7 @@ const stages: Stage[] = [
       "Office & Ejari",
     ],
     explore: "Explore Business Formation & Licensing",
+    href: "/services/business-formation-licensing",
   },
   {
     key: "operate",
@@ -207,7 +209,7 @@ export default function Lifecycle() {
               </div>
 
               <a
-                href="#services"
+                href={stage.href ?? "#services"}
                 className="mt-8 inline-flex items-center gap-2 text-[14px] font-semibold text-gold-300 transition hover:text-gold-500 lg:text-[15px]"
               >
                 {stage.explore}

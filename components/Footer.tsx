@@ -186,6 +186,15 @@ export default function Footer() {
   );
 }
 
+const hrefs: Record<string, string> = {
+  Home: "/",
+  Services: "/#services",
+  "Business lifecycle": "/#lifecycle",
+  Insights: "/#insights",
+  FAQ: "#faq",
+  "Formation & Licensing": "/services/business-formation-licensing",
+};
+
 function FooterCol({ title, items, viewAll = false }: { title: string; items: string[]; viewAll?: boolean }) {
   return (
     <div>
@@ -193,12 +202,12 @@ function FooterCol({ title, items, viewAll = false }: { title: string; items: st
       <ul className="mt-5 space-y-[18px] text-[15px] leading-[1.5] text-white/85">
         {items.map((i) => (
           <li key={i}>
-            <a href="#" className="whitespace-nowrap transition hover:text-gold-300">{i}</a>
+            <a href={hrefs[i] ?? "#"} className="whitespace-nowrap transition hover:text-gold-300">{i}</a>
           </li>
         ))}
         {viewAll && (
           <li>
-            <a href="#services" className="inline-flex items-center gap-2 font-semibold text-gold-500 hover:text-gold-300">
+            <a href="/#services" className="inline-flex items-center gap-2 font-semibold text-gold-500 hover:text-gold-300">
               View all 12
               <ArrowRight className="h-4 w-4" />
             </a>
