@@ -58,7 +58,7 @@ export default function LogoStrip() {
   return (
     <section className="bg-neutral-50 pb-16 pt-14 sm:pb-20 sm:pt-16 md:pb-[106px] md:pt-20">
       <div className="wrap grid grid-cols-1 gap-7 lg:grid-cols-[300px_1fr] lg:items-center lg:gap-10">
-        <div>
+        <div data-reveal>
           <p className="eyebrow">Trusted network</p>
           <h3 className="mt-3 text-[26px] font-semibold leading-[1.15] tracking-[-0.02em] text-blue-950 sm:text-[28px]">
             Businesses Build <br className="hidden lg:block" />
@@ -72,6 +72,7 @@ export default function LogoStrip() {
           {marks.map((m) => (
             <li
               key={m.name}
+              data-reveal
               className="flex h-[64px] items-center justify-center gap-1.5 rounded-[16px] border border-neutral-100 bg-white px-2 shadow-[0_8px_20px_-8px_rgba(18,31,66,0.12)] lg:h-[75px]"
             >
               <span className="shrink-0 text-neutral-600">{m.icon}</span>

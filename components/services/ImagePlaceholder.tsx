@@ -1,9 +1,18 @@
 import { ImageIcon } from "./icons";
 
 /** Gradient card with decorative arcs, standing in for licensed photography. */
-export default function ImagePlaceholder({ caption, className = "" }: { caption: string; className?: string }) {
+export default function ImagePlaceholder({
+  caption,
+  className = "",
+  reveal = false,
+}: {
+  caption: string;
+  className?: string;
+  reveal?: boolean;
+}) {
   return (
     <div
+      data-reveal={reveal || undefined}
       className={`relative isolate overflow-hidden rounded-[22px] bg-[linear-gradient(135deg,#2c4390_0%,#1d2d68_45%,#0e1738_100%)] sm:rounded-[26px] ${className}`}
     >
       <span className="pointer-events-none absolute left-[32%] top-1/2 aspect-square h-[170%] -translate-y-1/2 rounded-full border-[1.5px] border-white/85" />

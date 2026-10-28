@@ -46,18 +46,18 @@ export default function FAQ({
 
         <div className="panel-inner relative grid grid-cols-1 gap-12 pb-16 pt-14 sm:pt-16 lg:grid-cols-[minmax(0,694px)_490px] lg:justify-between lg:gap-10 lg:pb-[88px] lg:pt-[88px]">
           <div>
-            <div className="inline-flex items-center gap-3">
+            <div data-reveal className="inline-flex items-center gap-3">
               <span className="outline-pill inline-flex h-[34px] items-center px-4 text-[13px] font-medium text-white">
                 FAQs
               </span>
               <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
               <span className="-ml-3 h-px w-[100px] bg-gradient-to-r from-gold-500/60 to-transparent" />
             </div>
-            <h2 className="h2-light mt-5 text-white md:mt-6">
+            <h2 data-reveal className="h2-light mt-5 text-white md:mt-6">
               Frequently asked <br />
               <span className="text-gold-500">questions</span>
             </h2>
-            <p className="mt-5 max-w-[660px] text-[15px] leading-[1.65] text-white/70 sm:text-[16px]">
+            <p data-reveal className="mt-5 max-w-[660px] text-[15px] leading-[1.65] text-white/70 sm:text-[16px]">
               {intro}
             </p>
 
@@ -67,7 +67,8 @@ export default function FAQ({
                 return (
                   <div
                     key={f.q}
-                    className={`overflow-hidden rounded-[18px] border backdrop-blur-sm transition ${
+                    data-reveal
+                    className={`overflow-hidden rounded-[18px] border backdrop-blur-sm transition-colors ${
                       isOpen
                         ? "border-gold-500/35 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(225,180,39,0.08))]"
                         : "border-white/[0.12] bg-white/[0.05] hover:bg-white/[0.08]"
@@ -97,7 +98,7 @@ export default function FAQ({
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[490px] pb-5 pr-5 lg:mx-0 lg:pt-[38px]">
+          <div data-reveal className="relative mx-auto w-full max-w-[490px] pb-5 pr-5 lg:mx-0 lg:pt-[38px]">
             <AssessmentForm offset variant={formVariant} />
           </div>
         </div>

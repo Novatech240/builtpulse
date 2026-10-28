@@ -96,13 +96,13 @@ export default function Lifecycle() {
       <div className="wrap">
         {/* Header */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-[1fr_360px] md:gap-10 lg:grid-cols-[1fr_400px]">
-          <div>
+          <div data-reveal>
             <p className="eyebrow">Business lifecycle</p>
             <h2 className="h2-display mt-5 text-blue-950 md:mt-6">
               One partner for every stage of your business.
             </h2>
           </div>
-          <div className="flex flex-col justify-end">
+          <div data-reveal className="flex flex-col justify-end">
             <p className="text-[16px] leading-[1.6] text-neutral-600 lg:text-[18px]">
               Businesses rarely move in straight lines. Pick a stage to see how
               Builtpulse supports it — and how compliance loops you back into
@@ -143,7 +143,7 @@ export default function Lifecycle() {
         </div>
 
         {/* Stage tabs */}
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-5 sm:gap-4 lg:grid-cols-4 lg:gap-[18px]">
+        <div data-reveal className="mt-6 grid grid-cols-2 gap-3 sm:mt-5 sm:gap-4 lg:grid-cols-4 lg:gap-[18px]">
           {stages.map((s, i) => {
             const active = i === activeIdx;
             return (
@@ -177,10 +177,11 @@ export default function Lifecycle() {
         </div>
 
         {/* Detail panel */}
-        <div className="panel-sm relative mt-4 overflow-hidden bg-brand-dark px-5 py-8 sm:mt-5 sm:px-8 sm:py-10 md:px-12 md:py-12 lg:px-14 lg:pb-[56px] lg:pt-[60px]">
+        <div data-reveal className="panel-sm relative mt-4 overflow-hidden bg-brand-dark px-5 py-8 sm:mt-5 sm:px-8 sm:py-10 md:px-12 md:py-12 lg:px-14 lg:pb-[56px] lg:pt-[60px]">
           {/* Giant watermark number — bleeds off the top edge */}
           <p
             aria-hidden="true"
+            data-parallax="8"
             className="pointer-events-none absolute right-[-6px] select-none font-extrabold leading-none tracking-[-0.05em] text-blue-800/60 md:text-blue-800/90"
             style={{ fontSize: "clamp(180px, 30vw, 430px)", top: "-0.23em" }}
           >

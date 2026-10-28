@@ -13,6 +13,7 @@ export default function TrustMetrics({ size = "md", caption = true }: { size?: "
         {stats.map((s) => (
           <div
             key={s.label}
+            data-reveal
             className={`relative flex min-h-[150px] flex-col overflow-hidden rounded-[18px] border border-neutral-100 bg-white p-5 shadow-card sm:min-h-[176px] sm:rounded-[22px] sm:p-7 ${lg ? "lg:min-h-[249px] lg:rounded-[26px] lg:px-9 lg:pt-11" : "lg:min-h-[192px]"}`}
           >
             <div className="flex items-center justify-between gap-2">
@@ -23,7 +24,7 @@ export default function TrustMetrics({ size = "md", caption = true }: { size?: "
               </span>
             </div>
             <p className={`mt-4 text-[40px] font-extrabold leading-none tracking-[-0.04em] text-blue-950 sm:mt-5 sm:text-[52px] ${lg ? "lg:mt-8 lg:text-[80px]" : "lg:text-[64px]"}`}>
-              {s.value}
+              <span data-count={s.value}>{s.value}</span>
               <span className="text-gold-500">{s.suffix}</span>
             </p>
             <p className={`mt-3 text-[13px] leading-tight text-neutral-600 sm:mt-4 sm:text-[15px] ${lg ? "lg:mt-6 lg:text-[19px]" : "lg:text-[17px]"}`}>{s.label}</p>

@@ -36,7 +36,7 @@ export default function Testimonials() {
         />
 
         <div className="relative pb-14 pt-16 sm:pt-20 lg:pb-[70px] lg:pt-[90px]">
-          <div className="panel-inner text-center">
+          <div data-reveal className="panel-inner text-center">
             <div className="mx-auto inline-flex items-center gap-3 sm:gap-4">
               <span className="hidden h-px w-20 bg-gradient-to-r from-transparent to-white/30 sm:inline-block sm:w-[108px]" />
               <span className="hidden h-1.5 w-1.5 rotate-45 bg-gold-500 sm:inline-block" />
@@ -54,7 +54,7 @@ export default function Testimonials() {
             </p>
           </div>
 
-          <div className="relative mt-12 flex min-h-[360px] items-center overflow-hidden mask-fade-edges lg:mt-[60px]">
+          <div data-reveal className="relative mt-12 flex min-h-[360px] items-center overflow-hidden mask-fade-edges lg:mt-[60px]">
             <div
               className="flex w-full items-center gap-[var(--gap)] transition-transform duration-500 [--cw:280px] [--gap:16px] sm:[--cw:339px] sm:[--gap:25px]"
               style={

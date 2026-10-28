@@ -32,7 +32,7 @@ export default function Insights() {
   return (
     <section id="insights" className="bg-neutral-50 pb-20 pt-20 sm:pb-24 md:pb-[110px] lg:pt-[134px]">
       <div className="wrap">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <div data-reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="eyebrow">Business insights</p>
             <h2 className="mt-4 text-balance text-[34px] font-bold leading-[1.04] tracking-[-0.03em] text-blue-950 sm:text-[42px] md:text-[48px] lg:text-[54px]">
@@ -49,7 +49,8 @@ export default function Insights() {
           {posts.map((p) => (
             <article
               key={p.title}
-              className="group flex flex-col overflow-hidden rounded-[16px] border border-neutral-100 bg-white shadow-[0_18px_40px_-12px_rgba(18,31,66,0.12)] transition hover:shadow-[0_24px_48px_-10px_rgba(18,31,66,0.2)]"
+              data-reveal
+              className="group flex flex-col overflow-hidden rounded-[16px] border border-neutral-100 bg-white shadow-[0_18px_40px_-12px_rgba(18,31,66,0.12)] transition-shadow hover:shadow-[0_24px_48px_-10px_rgba(18,31,66,0.2)]"
             >
               <div className="relative aspect-[2/1] w-full overflow-hidden">
                 <Image

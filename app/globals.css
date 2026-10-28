@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html.anim-pending [data-hero],
+html.anim-pending [data-reveal] {
+  visibility: hidden;
+}
+
 @layer base {
   :root {
     --radius-pill: 999px;
