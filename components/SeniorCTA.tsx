@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { ArrowRight } from "./Icons";
 
 export default function SeniorCTA({
-  title = <>Let&rsquo;s talk about your next move</>,
-  body = "Get clarity on your next business step with guidance tailored to your goals.",
-  cta = "Book a Call With a Senior Consultant",
+  title = "Ready to Take Your Next Business Step?",
+  body = "Get tailored guidance on business setup in Dubai, operational support, and the services your company needs to move forward.",
+  cta = "Speak With a Business Consultant",
   note = "Scheduling link — configurable (e.g. booking calendar URL)",
   titleClassName = "max-w-[1100px] text-[48px] sm:text-[72px] md:text-[96px] lg:text-[112px] xl:text-[124px]",
   sectionClassName = "pb-2 pt-3 sm:pb-3 sm:pt-5 md:pb-4 md:pt-8",

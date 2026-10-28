@@ -1,5 +1,5 @@
 "use client";
-import { useState, type CSSProperties } from "react";
+import { useState, type CSSProperties, type ReactNode } from "react";
 import { ArrowRight } from "./Icons";
 
 const items = [
@@ -21,7 +21,17 @@ const items = [
   },
 ];
 
-export default function Testimonials() {
+export default function Testimonials({
+  title = (
+    <>
+      What our <span className="text-gold-500">clients</span> are saying
+    </>
+  ),
+  body = "From first licence to every renewal, businesses rely on BuiltPulse to keep setup, operations and compliance moving.",
+}: {
+  title?: ReactNode;
+  body?: string;
+}) {
   const [active, setActive] = useState(2);
 
   return (
@@ -46,11 +56,11 @@ export default function Testimonials() {
               <span className="hidden h-1.5 w-1.5 rotate-45 bg-gold-500 sm:inline-block" />
               <span className="hidden h-px w-20 bg-gradient-to-l from-transparent to-white/30 sm:inline-block sm:w-[108px]" />
             </div>
-            <h2 className="h2-light mt-6 text-white">
-              What our <span className="text-gold-500">clients</span> are saying
+            <h2 className="h2-light mx-auto mt-6 max-w-[960px] text-balance text-white">
+              {title}
             </h2>
-            <p className="mx-auto mt-5 max-w-[560px] text-[16px] leading-[1.6] text-white/70 lg:text-[17px]">
-              From first licence to every renewal, businesses rely on BuiltPulse to keep setup, operations and compliance moving.
+            <p className="mx-auto mt-5 max-w-[680px] text-[16px] leading-[1.6] text-white/70 lg:text-[17px]">
+              {body}
             </p>
           </div>
 

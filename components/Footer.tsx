@@ -50,16 +50,16 @@ export default function Footer() {
             <span className="h-2 w-2 rounded-full bg-gold-500" />
             <span className="text-[13px] font-medium text-white">Get started</span>
           </span>
-          <h2 data-reveal className="h2-light mx-auto mt-5 max-w-[800px] text-white md:mt-6">
-            Ready to build your business <br className="hidden sm:block" />
+          <h2 data-reveal className="h2-light mx-auto mt-5 max-w-[960px] text-white md:mt-6">
+            Ready to Set Up Your Business <br className="hidden sm:block" />
             <span className="text-gold-500">in Dubai</span>?
           </h2>
           <p data-reveal className="mx-auto mt-5 max-w-[530px] text-[16px] leading-[1.6] text-white/75 lg:text-[17px]">
-            Tell us where you are today — we&rsquo;ll map the setup, services and compliance steps you need next.
+            Tell us your business goals, and we&rsquo;ll outline the setup, services, and compliance steps suited to your next stage.
           </p>
           <div data-reveal className="mt-7 flex flex-col items-center gap-3.5">
             <a href="#audit" className="btn-primary h-[52px] py-0">
-              Book a Business Audit
+              Book Your Business Audit
               <ArrowRight className="h-4 w-4" />
             </a>
             <a href="https://wa.me/971501012709" className="btn-outline-light h-[52px] bg-blue-950/40 py-0">
@@ -79,8 +79,9 @@ export default function Footer() {
               className="h-[46px] w-auto"
               style={{ width: "auto" }}
             />
-            <p className="mt-5 max-w-[290px] text-[15px] leading-[1.6] text-white/80">
-              Business setup, PRO, compliance and growth services for companies in Dubai — from your first licence to every renewal.
+            <p className="mt-5 text-[17px] font-semibold text-white">Where Businesses Take Shape.</p>
+            <p className="mt-2 max-w-[290px] text-[15px] leading-[1.6] text-white/80">
+              From business incubation and company formation to compliance and growth, BuiltPulse provides the services and support to build your business in Dubai.
             </p>
             <div className="mt-6 flex items-center gap-2.5">
               {[
@@ -193,6 +194,7 @@ const hrefs: Record<string, string> = {
   Insights: "/#insights",
   FAQ: "#faq",
   "Formation & Licensing": "/services/business-formation-licensing",
+  "Tax & Compliance": "/services/tax-regulatory-compliance",
 };
 
 function FooterCol({ title, items, viewAll = false }: { title: string; items: string[]; viewAll?: boolean }) {

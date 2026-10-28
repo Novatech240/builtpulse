@@ -118,3 +118,46 @@ export const Close = (p: P) => (
     <path d="M6 6l12 12M18 6 6 18" />
   </svg>
 );
+
+export const Receipt = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z" />
+    <path d="M9 8h6M9 12h6M9 16h3" />
+  </svg>
+);
+
+export const Percent = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M19 5 5 19" />
+    <circle cx="7" cy="7" r="2.5" />
+    <circle cx="17" cy="17" r="2.5" />
+  </svg>
+);
+
+export const Building = (p: P) => (
+  <svg {...base} {...p}>
+    <rect x="4" y="3" width="16" height="18" rx="1.5" />
+    <path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M10 21v-4h4v4" />
+  </svg>
+);
+
+export const ShieldCheck = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M12 3 4.5 6v5.5c0 4.5 3.2 8.2 7.5 9.5 4.3-1.3 7.5-5 7.5-9.5V6L12 3Z" />
+    <path d="m8.5 12 2.5 2.5 4.5-5" />
+  </svg>
+);
+
+export const Search = (p: P) => (
+  <svg {...base} {...p}>
+    <circle cx="11" cy="11" r="6.5" />
+    <path d="m20 20-4.4-4.4" />
+  </svg>
+);
+
+export const Calendar = (p: P) => (
+  <svg {...base} {...p}>
+    <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+    <path d="M3.5 10h17M8 3v4M16 3v4" />
+  </svg>
+);

@@ -1,24 +1,33 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Chevron } from "./Icons";
 
-const copy = {
-  home: {
-    title: "Tell us where your business stands.",
-    body: "Two short steps. We use your answers to identify the relevant services and next steps.",
-  },
-  formation: {
-    title: "Tell us about your business setup.",
-    body: "Two short steps. We use your answers to identify the relevant formation and licensing services and next steps.",
-  },
+export type FormCopy = {
+  title: string;
+  body: string;
+  submit?: string;
+  /** Fourth field: company name, or a jurisdiction picker for setup services. */
+  field?: "company" | "jurisdiction";
 };
+
+const homeCopy: FormCopy = {
+  title: "What does your business need next?",
+  body: "Whether you're setting up a company in Dubai or expanding across the UAE, share your goals with us. We'll help you identify the services that fit your business needs.",
+};
+
+/** A jurisdiction pushed in from elsewhere on the page; `nonce` lets the same value be re-applied. */
+export type FormPreset = { jurisdiction: string; nonce: number } | null;
 
 export default function AssessmentForm({
   offset = false,
   variant = "home",
+  copy = homeCopy,
+  preset = null,
 }: {
   offset?: boolean;
-  variant?: "home" | "formation";
+  variant?: "home" | "service";
+  copy?: FormCopy;
+  preset?: FormPreset;
 }) {
   const [data, setData] = useState({
     name: "",
@@ -27,8 +36,13 @@ export default function AssessmentForm({
     company: "",
     jurisdiction: "",
   });
-  const formation = variant === "formation";
-  const inputBg = formation ? "bg-white" : "bg-neutral-50";
+  const service = variant === "service";
+  const inputBg = service ? "bg-white" : "bg-neutral-50";
+  const jurisdictionField = copy.field === "jurisdiction";
+
+  useEffect(() => {
+    if (preset) setData((d) => ({ ...d, jurisdiction: preset.jurisdiction }));
+  }, [preset]);
 
   return (
     <div className="relative w-full max-w-[470px]">
@@ -62,9 +76,9 @@ export default function AssessmentForm({
         </div>
 
         <h3 className="relative mb-2 text-[24px] font-semibold leading-[1.18] tracking-[-0.36px] text-blue-950 sm:text-[30px]">
-          {copy[variant].title}
+          {copy.title}
         </h3>
-        <p className="relative mb-5 text-[14px] leading-[1.52] text-neutral-600">{copy[variant].body}</p>
+        <p className="relative mb-5 text-[14px] leading-[1.52] text-neutral-600">{copy.body}</p>
 
         <div className="relative space-y-4 sm:space-y-[18px]">
           <Field
@@ -90,7 +104,7 @@ export default function AssessmentForm({
               Phone number
             </label>
             <div className="flex items-stretch overflow-hidden rounded-xl border border-neutral-300">
-              <div className={`flex shrink-0 items-center gap-1.5 border-r border-neutral-300 ${formation ? "bg-white" : "bg-gold-100"} px-2.5 sm:gap-2 sm:px-4`}>
+              <div className={`flex shrink-0 items-center gap-1.5 border-r border-neutral-300 ${service ? "bg-white" : "bg-gold-100"} px-2.5 sm:gap-2 sm:px-4`}>
                 <span className="text-[14px] text-blue-950 sm:text-[16px]">+971</span>
                 <Chevron className="h-3 w-3 text-blue-950/70" />
               </div>
@@ -106,7 +120,7 @@ export default function AssessmentForm({
             </div>
           </div>
 
-          {formation ? (
+          {jurisdictionField ? (
             <div>
               <label htmlFor="preferred-jurisdiction" className="mb-[7px] block text-[13px] font-medium text-blue-900">
                 Preferred jurisdiction
@@ -146,7 +160,7 @@ export default function AssessmentForm({
             type="submit"
             className="group flex min-h-12 w-full items-center justify-between rounded-full bg-gold-pill py-[6px] pl-5 pr-[6px] shadow-gold transition hover:brightness-[0.97] sm:pl-6"
           >
-            <span className="text-[15px] font-semibold text-blue-950 sm:text-[16px]">Continue</span>
+            <span className="text-[15px] font-semibold text-blue-950 sm:text-[16px]">{copy.submit ?? "Continue"}</span>
             <span className="grid h-11 w-11 place-items-center rounded-full bg-brand-chip text-white transition group-hover:translate-x-0.5">
               <ArrowRight className="h-[18px] w-[18px]" />
             </span>

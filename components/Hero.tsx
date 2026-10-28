@@ -75,19 +75,22 @@ export default function Hero() {
               </span>
             </span>
 
-            <h1 className="mt-6 text-[48px] font-light leading-[0.98] tracking-[-0.035em] text-white/85 sm:text-[64px] md:mt-8 md:text-[80px] lg:mt-10 lg:text-[68px] xl:text-[88px] min-[1400px]:text-[104px]">
+            <h1 className="mt-6 text-[44px] font-light leading-[1] tracking-[-0.035em] text-white/85 sm:text-[60px] md:mt-8 md:text-[72px] lg:mt-10 lg:text-[60px] xl:text-[74px] min-[1400px]:text-[86px]">
               <span data-hero className="block">
-                Build <span className="font-extrabold text-white">smarter.</span>
+                Launch <span className="font-extrabold text-white">Faster.</span>
               </span>
               <span data-hero className="block">
-                Grow <span className="font-extrabold text-gold-500">stronger.</span>
+                Scale <span className="font-extrabold text-gold-500">Smarter</span>
+              </span>
+              <span data-hero className="block">
+                in Dubai.
               </span>
             </h1>
 
             <p data-hero className="mt-5 max-w-[780px] text-pretty text-[16px] leading-[1.6] text-white/80 sm:text-[17px] lg:mt-4 lg:text-[19px]">
-              From business setup to ongoing compliance, BuiltPulse brings the
-              essential services, expertise and support your business needs to
-              move forward in Dubai.
+              From business setup in Dubai to the services that keep your
+              company moving, BuiltPulse connects your business needs across
+              every stage of growth.
             </p>
 
             <div data-hero className="mt-6 flex flex-col gap-2.5">
@@ -112,17 +115,17 @@ export default function Hero() {
 
             <div data-hero className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <a
-                href="#services"
+                href="#audit"
                 className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-gold-500 px-[26px] text-[15px] font-semibold text-blue-950 transition hover:brightness-[0.97]"
               >
-                Explore Our Services
+                Book a Free Business Audit
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="#lifecycle"
+                href="#services"
                 className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full border-[1.2px] border-white/90 px-[26px] text-[15px] font-semibold text-white transition hover:bg-white/10"
               >
-                How it works
+                Explore Our Services
               </a>
             </div>
           </div>
