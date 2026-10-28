@@ -57,15 +57,14 @@ const marks: { name: string; icon: ReactNode }[] = [
 export default function LogoStrip() {
   return (
     <section className="bg-neutral-50 pb-16 pt-14 sm:pb-20 sm:pt-16 md:pb-[106px] md:pt-20">
-      <div className="wrap grid grid-cols-1 gap-7 lg:grid-cols-[300px_1fr] lg:items-center lg:gap-10">
+      <div className="wrap grid grid-cols-1 gap-7 lg:grid-cols-[340px_1fr] lg:items-center lg:gap-10">
         <div data-reveal>
-          <p className="eyebrow">Trusted network</p>
+          <p className="eyebrow">Accredited &amp; affiliated</p>
           <h3 className="mt-3 text-[26px] font-semibold leading-[1.15] tracking-[-0.02em] text-blue-950 sm:text-[28px]">
-            Businesses Build <br className="hidden lg:block" />
-            Better Together.
+            Recognised by the Authorities. Trusted by Businesses.
           </h3>
-          <p className="mt-3 max-w-[300px] text-[13px] leading-[1.55] text-neutral-600">
-            Fictional demo wordmarks — not real clients. Replace with approved logos.
+          <p className="mt-3 max-w-[340px] text-[14px] leading-[1.55] text-neutral-600">
+            Built on established relationships with relevant UAE authorities, free zones, and government channels.
           </p>
         </div>
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6 lg:gap-[15px]">

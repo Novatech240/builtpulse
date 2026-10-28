@@ -19,9 +19,9 @@ const stages: Stage[] = [
     key: "start",
     n: "01",
     label: "Start",
-    sub: "Formation & licensing",
-    title: "Launch on the right foundation.",
-    copy: "Choose your jurisdiction and legal structure, reserve the trade name, draft the MOA and get licensed — with immigration and labour files opened.",
+    sub: "Business Formation & Licensing",
+    title: "Launch with Clarity. Set Up with Confidence.",
+    copy: "Choosing where and how to establish your company shapes its costs, licensing requirements, and future opportunities. BuiltPulse helps you navigate business setup in Dubai and across the UAE, with guidance on jurisdiction selection, activity approvals, trade name reservation, and establishment cards.",
     pills: [
       "Jurisdiction & structure",
       "Trade name & initial approval",
@@ -30,16 +30,16 @@ const stages: Stage[] = [
       "Establishment cards",
       "Office & Ejari",
     ],
-    explore: "Explore Business Formation & Licensing",
+    explore: "Explore Business Formation & Licensing Options",
     href: "/services/business-formation-licensing",
   },
   {
     key: "operate",
     n: "02",
     label: "Operate",
-    sub: "Banking · PRO · Office",
-    title: "Keep operations running on a predictable rhythm.",
-    copy: "Open banking, run PRO work, clear residencies and keep office, visa and ID files current — a single calendar for the busy months.",
+    sub: "Banking · Immigration & PRO · Office Solutions",
+    title: "Keep Your Business Running Without the Operational Bottlenecks",
+    copy: "Manage your UAE business setup with corporate bank account, WPS payroll processing, visa applications, Emirates ID services, and ongoing PRO support.",
     pills: [
       "Corporate banking",
       "PRO & GDRFA liaison",
@@ -48,15 +48,15 @@ const stages: Stage[] = [
       "Office management",
       "Renewal calendar",
     ],
-    explore: "Explore Operate services",
+    explore: "View Operational Support",
   },
   {
     key: "grow",
     n: "03",
     label: "Grow",
-    sub: "Marketing · Consulting · HR",
-    title: "Add activities, markets or capital with confidence.",
-    copy: "Restructure cleanly for new revenue lines, hire into the right contracts and launch campaigns that respect the UAE media calendar.",
+    sub: "Marketing · Business Consulting · HR",
+    title: "Build Your Brand. Expand Your Reach.",
+    copy: "Strengthen your market presence with digital branding, website development, marketing campaigns, and business consulting, backed by recruitment and HR support to help your company grow across the UAE.",
     pills: [
       "Activity amendments",
       "Investment structuring",
@@ -65,15 +65,15 @@ const stages: Stage[] = [
       "Events & delegations",
       "Digital footprint",
     ],
-    explore: "Explore Grow services",
+    explore: "See Marketing & Events",
   },
   {
     key: "comply",
     n: "04",
     label: "Stay compliant",
     sub: "Tax · Legal · Renewals",
-    title: "Stay audit-ready as rules and thresholds shift.",
-    copy: "A compliance calendar that follows your licences, tax groups and workforce — with legal, audit and renewal workflows that trigger before deadlines.",
+    title: "Stay Compliant. Keep Your Business on Track.",
+    copy: "Meet your UAE business obligations with corporate tax registration, VAT returns, UBO filings, licence renewals, and essential compliance documentation, all coordinated to keep deadlines and regulatory requirements in view.",
     pills: [
       "Corporate tax & VAT",
       "ESR / UBO / AML",
@@ -82,7 +82,7 @@ const stages: Stage[] = [
       "Licence renewals",
       "Policy & governance",
     ],
-    explore: "Explore Stay compliant services",
+    explore: "Review Compliance Services",
   },
 ];
 
@@ -104,16 +104,16 @@ export default function Lifecycle() {
           </div>
           <div data-reveal className="flex flex-col justify-end">
             <p className="text-[16px] leading-[1.6] text-neutral-600 lg:text-[18px]">
-              Businesses rarely move in straight lines. Pick a stage to see how
-              Builtpulse supports it — and how compliance loops you back into
-              operating and growing.
+              Launching, managing, and growing a business comes with changing
+              needs. BuiltPulse connects essential services across the business
+              lifecycle, giving you a clearer path to your next milestone.
             </p>
             <button
               type="button"
               onClick={() => setActiveIdx((i) => (i + 1) % stages.length)}
               className="mt-4 inline-flex w-fit items-center gap-2 text-[14px] font-semibold text-blue-900 transition hover:text-blue-800 lg:text-[15px]"
             >
-              Select a stage
+              Explore the business lifecycle
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>

@@ -14,6 +14,9 @@ export function Modal({
   children,
   footerNote,
   widthClass = "max-w-[944px]",
+  primaryLabel = "Book a Call",
+  secondaryLabel = "Speak to a Consultant",
+  onPrimary,
 }: {
   open: boolean;
   onClose: () => void;
@@ -23,6 +26,10 @@ export function Modal({
   children: ReactNode;
   footerNote?: ReactNode;
   widthClass?: string;
+  primaryLabel?: string;
+  secondaryLabel?: string;
+  /** Runs before the modal closes and the page jumps to the form. */
+  onPrimary?: () => void;
 }) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -111,14 +118,17 @@ export function Modal({
               onClick={onClose}
               className="inline-flex h-[54px] items-center justify-center whitespace-nowrap rounded-full border-[1.5px] border-blue-950 px-7 text-[16px] font-semibold text-blue-950 transition hover:bg-blue-950/5"
             >
-              Speak to a Consultant
+              {secondaryLabel}
             </a>
             <a
               href="#audit"
-              onClick={onClose}
+              onClick={() => {
+                onPrimary?.();
+                onClose();
+              }}
               className="inline-flex h-[54px] items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-gold-400 px-7 text-[16px] font-semibold text-blue-950 transition hover:brightness-[0.97]"
             >
-              Book a Call
+              {primaryLabel}
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
@@ -136,7 +146,7 @@ export function ServiceItem({
 }: {
   n: string;
   title: string;
-  desc: string;
+  desc?: string;
   icon: ReactNode;
 }) {
   return (
@@ -145,7 +155,7 @@ export function ServiceItem({
       <div className="min-w-0">
         <p className="font-mono text-[11px] font-medium tracking-[0.14em] text-blue-800">{n}</p>
         <p className="mt-1.5 text-[16px] font-semibold leading-[1.35] text-blue-950 sm:text-[17px]">{title}</p>
-        <p className="mt-1 text-[14px] leading-[1.5] text-neutral-600 sm:text-[15px]">{desc}</p>
+        {desc && <p className="mt-1 text-[14px] leading-[1.5] text-neutral-600 sm:text-[15px]">{desc}</p>}
       </div>
     </div>
   );

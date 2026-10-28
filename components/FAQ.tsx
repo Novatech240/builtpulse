@@ -1,41 +1,51 @@
 "use client";
 import { useState } from "react";
-import AssessmentForm from "./AssessmentForm";
+import type { ReactNode } from "react";
+import AssessmentForm, { type FormCopy } from "./AssessmentForm";
 
 export type FaqItem = { q: string; a: string };
 
 const homeFaqs: FaqItem[] = [
   {
-    q: "What business setup options are available?",
-    a: "You can typically set up on the Mainland, in a Free Zone or Offshore, as an LLC, Sole Establishment, Civil Company or Branch. We help you compare options; the right structure depends on your activity and the applicable rules.",
+    q: "What business setup options are available in the UAE?",
+    a: "Businesses can generally choose Mainland, Free Zone, or Offshore structures, subject to applicable rules. Options may include an LLC, Sole Establishment, Civil Company, or Branch. BuiltPulse helps you compare suitable options for company setup in Dubai based on your business activity and goals.",
   },
   {
     q: "Which services can BuiltPulse assist with?",
-    a: "Formation and licensing, tax and regulatory compliance, consulting and structuring, marketing and events — plus immigration and PRO, banking, office, digital, renewals, government services, HR and legal support.",
+    a: "BuiltPulse offers business setup services in Dubai and ongoing support across 12 service areas. These include formation and licensing, tax compliance, consulting, marketing, immigration and PRO, banking, office solutions, digital setup, renewals, government transactions, HR, and legal services.",
   },
   {
-    q: "What documents might be required?",
-    a: "Usually passport copies, a proposed trade name and business activity, and — for corporate shareholders — attested company documents. Exact requirements depend on the jurisdiction and activity.",
+    q: "What documents are required to set up a business?",
+    a: "Documents depend on the jurisdiction, business activity, and relevant authority. Common requirements may include shareholder passports, trade name details, incorporation documents, and tenancy or Ejari records where applicable. Banks may also request separate KYC documentation.",
   },
   {
-    q: "Can businesses get support after licensing?",
-    a: "Yes. After licensing we can handle PRO work, visas, banking, renewals and compliance filings so your company keeps running on schedule.",
+    q: "Can BuiltPulse support my business after licensing?",
+    a: "Yes, BuiltPulse supports businesses beyond company formation through visa processing, WPS payroll administration, bookkeeping, licence renewals, tax filing coordination, HR services, and compliance tracking. This ongoing support helps businesses manage operational needs as they grow.",
   },
   {
-    q: "Which compliance obligations may apply?",
-    a: "Depending on your activity and structure, this can include Corporate Tax and VAT registration and filing, UBO and ESR filings, and goAML / AML registration for DNFBP activities.",
+    q: "Which tax and regulatory obligations may apply to my business?",
+    a: "Depending on your circumstances, obligations may include Corporate Tax registration and filing, VAT registration and returns, Ultimate Beneficial Owner (UBO) disclosures, and other applicable regulatory requirements. VAT registration thresholds and specific obligations depend on the relevant rules and your business activities.",
   },
 ];
 
 export default function FAQ({
+  title = (
+    <>
+      Frequently asked <br />
+      <span className="text-gold-500">questions</span>
+    </>
+  ),
   faqs = homeFaqs,
-  intro = "Straight answers on setup, documents and compliance. General guidance only — exact requirements depend on your business activity, jurisdiction and applicable rules.",
+  intro = "Get clear answers about business setup in Dubai, required documents, ongoing services, and compliance obligations. Requirements vary by business activity, jurisdiction, and applicable regulations.",
   formVariant = "home",
+  formCopy,
   className = "bg-neutral-50",
 }: {
+  title?: ReactNode;
   faqs?: FaqItem[];
   intro?: string;
-  formVariant?: "home" | "formation";
+  formVariant?: "home" | "service";
+  formCopy?: FormCopy;
   className?: string;
 }) {
   const [open, setOpen] = useState<number | null>(0);
@@ -53,9 +63,8 @@ export default function FAQ({
               <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
               <span className="-ml-3 h-px w-[100px] bg-gradient-to-r from-gold-500/60 to-transparent" />
             </div>
-            <h2 data-reveal className="h2-light mt-5 text-white md:mt-6">
-              Frequently asked <br />
-              <span className="text-gold-500">questions</span>
+            <h2 data-reveal className="h2-light mt-5 text-balance text-white md:mt-6">
+              {title}
             </h2>
             <p data-reveal className="mt-5 max-w-[660px] text-[15px] leading-[1.65] text-white/70 sm:text-[16px]">
               {intro}
@@ -99,7 +108,7 @@ export default function FAQ({
           </div>
 
           <div data-reveal className="relative mx-auto w-full max-w-[490px] pb-5 pr-5 lg:mx-0 lg:pt-[38px]">
-            <AssessmentForm offset variant={formVariant} />
+            <AssessmentForm offset variant={formVariant} copy={formCopy} />
           </div>
         </div>
       </div>
