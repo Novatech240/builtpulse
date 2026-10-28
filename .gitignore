@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+.env*
+*.log
+.DS_Store
+.tmp-ai/
+.agents/
+.claude/
+skills/
+agent-skills/
+impeccable/

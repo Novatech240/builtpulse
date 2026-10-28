@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius-pill: 999px;
+  }
+
+  html,
+  body {
+    @apply bg-white text-blue-950 antialiased;
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase leading-none tracking-[0.14em] text-blue-600 sm:text-[12px];
+  }
+  .eyebrow-gold {
+    @apply text-[11px] font-semibold uppercase leading-none tracking-[0.14em] text-gold-500 sm:text-[12px];
+  }
+  .eyebrow-light {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-white/60;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full bg-gold-500 px-[26px] py-[17px] text-[15px] font-semibold leading-[1.2] text-blue-950 transition hover:brightness-[0.97] active:brightness-[0.94];
+  }
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-[26px] py-[17px] text-[15px] font-semibold leading-[1.2] text-white transition bg-brand-chip hover:brightness-110;
+  }
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full border-[1.2px] border-white/90 px-[26px] py-[17px] text-[15px] font-semibold leading-[1.2] text-white transition hover:bg-white/10;
+  }
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full border-[1.2px] border-blue-950/80 px-[26px] py-[17px] text-[15px] font-semibold leading-[1.2] text-blue-950 transition hover:bg-blue-950/5;
+  }
+  .glass-pill {
+    @apply rounded-full border border-white/15 bg-blue-900/60 backdrop-blur-md;
+  }
+  .outline-pill {
+    @apply rounded-full border border-white/15 bg-white/[0.03] backdrop-blur-md;
+  }
+  .nav-link {
+    @apply text-[15px] font-semibold leading-[1.2] text-white/85 transition hover:text-white;
+  }
+  .section {
+    @apply px-2 sm:px-3 md:px-4;
+  }
+  /* Content column for sections that sit directly on the page (1280px at desktop). */
+  .wrap {
+    @apply mx-auto w-full max-w-[1344px] px-3 sm:px-4 md:px-6 lg:px-8;
+  }
+  /* Inner content column for full-width rounded panels (1264px at desktop). */
+  .panel-inner {
+    @apply mx-auto w-full max-w-[1408px] px-4 sm:px-7 md:px-10 xl:px-[72px];
+  }
+  .h2-display {
+    @apply text-balance text-[38px] font-bold leading-[1.02] tracking-[-0.03em] sm:text-[48px] md:text-[60px] lg:text-[72px];
+  }
+  .h2-light {
+    @apply text-balance text-[34px] font-light leading-[1.04] tracking-[-0.025em] sm:text-[44px] md:text-[52px] lg:text-[60px];
+  }
+  .panel {
+    @apply rounded-[22px] sm:rounded-[28px] md:rounded-[32px] lg:rounded-[40px];
+  }
+  .panel-sm {
+    @apply rounded-[18px] sm:rounded-[22px] md:rounded-[24px] lg:rounded-[28px];
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .grid-overlay {
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 100px 100px;
+  }
+  .grid-overlay-dark {
+    background-image:
+      linear-gradient(to right, rgba(18, 31, 66, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(18, 31, 66, 0.04) 1px, transparent 1px);
+    background-size: 96px 96px;
+  }
+
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(to right, black 70%, transparent 100%);
+    mask-image: linear-gradient(to right, black 70%, transparent 100%);
+  }
+  .mask-fade-l {
+    -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);
+    mask-image: linear-gradient(to left, black 70%, transparent 100%);
+  }
+  .mask-fade-top {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 70%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 70%);
+  }
+  .mask-fade-edges {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
