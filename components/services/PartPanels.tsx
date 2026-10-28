@@ -101,7 +101,7 @@ export function LicensingPart({ onExplore }: { onExplore: () => void }) {
                 key={title}
                 type="button"
                 onClick={onExplore}
-                className="group rounded-[16px] border border-neutral-100 bg-white p-6 text-left transition hover:border-gold-500/50 hover:shadow-soft lg:p-7"
+                className="group flex flex-col items-start justify-start rounded-[16px] border border-neutral-100 bg-white p-6 text-left transition hover:border-gold-500/50 hover:shadow-soft lg:p-7"
               >
                 <span className="grid h-[52px] w-[52px] place-items-center rounded-[12px] bg-blue-950 text-gold-500">
                   <Icon className="h-[22px] w-[22px]" />
