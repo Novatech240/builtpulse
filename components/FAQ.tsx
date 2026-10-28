@@ -2,7 +2,9 @@
 import { useState } from "react";
 import AssessmentForm from "./AssessmentForm";
 
-const faqs = [
+export type FaqItem = { q: string; a: string };
+
+const homeFaqs: FaqItem[] = [
   {
     q: "What business setup options are available?",
     a: "You can typically set up on the Mainland, in a Free Zone or Offshore, as an LLC, Sole Establishment, Civil Company or Branch. We help you compare options; the right structure depends on your activity and the applicable rules.",
@@ -25,10 +27,20 @@ const faqs = [
   },
 ];
 
-export default function FAQ() {
+export default function FAQ({
+  faqs = homeFaqs,
+  intro = "Straight answers on setup, documents and compliance. General guidance only — exact requirements depend on your business activity, jurisdiction and applicable rules.",
+  formVariant = "home",
+  className = "bg-neutral-50",
+}: {
+  faqs?: FaqItem[];
+  intro?: string;
+  formVariant?: "home" | "formation";
+  className?: string;
+}) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="section bg-neutral-50 pt-2 sm:pt-3 md:pt-4">
+    <section id="faq" className={`section pt-2 sm:pt-3 md:pt-4 ${className}`}>
       <div className="panel relative w-full overflow-hidden bg-brand-dark">
         <div className="pointer-events-none absolute inset-0 grid-overlay opacity-70" />
 
@@ -46,7 +58,7 @@ export default function FAQ() {
               <span className="text-gold-500">questions</span>
             </h2>
             <p className="mt-5 max-w-[660px] text-[15px] leading-[1.65] text-white/70 sm:text-[16px]">
-              Straight answers on setup, documents and compliance. General guidance only — exact requirements depend on your business activity, jurisdiction and applicable rules.
+              {intro}
             </p>
 
             <div className="mt-9 flex flex-col gap-3">
@@ -86,7 +98,7 @@ export default function FAQ() {
           </div>
 
           <div className="relative mx-auto w-full max-w-[490px] pb-5 pr-5 lg:mx-0 lg:pt-[38px]">
-            <AssessmentForm offset />
+            <AssessmentForm offset variant={formVariant} />
           </div>
         </div>
       </div>

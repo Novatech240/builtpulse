@@ -5,14 +5,14 @@ import Image from "next/image";
 import { ArrowRight } from "./Icons";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Lifecycle", href: "#lifecycle" },
-  { label: "Insights", href: "#insights" },
+  { label: "Services", href: "/#services" },
+  { label: "Lifecycle", href: "/#lifecycle" },
+  { label: "Insights", href: "/#insights" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
-export default function Nav() {
+export default function Nav({ active }: { active?: string }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Nav() {
   return (
     <nav className="absolute inset-x-0 top-4 z-30 sm:top-5 lg:top-[30px]">
       <div className="flex w-full items-center justify-between gap-2 px-3 sm:px-5 lg:px-8">
-        <a href="#" className="outline-pill flex h-11 shrink-0 items-center px-3 sm:px-4 md:h-12 lg:h-[52px] lg:px-5">
+        <a href="/" className="outline-pill flex h-11 shrink-0 items-center px-3 sm:px-4 md:h-12 lg:h-[52px] lg:px-5">
           <Image
             src="/brand/builtpulse-logo-white.png"
             alt="BuiltPulse"
@@ -48,7 +48,11 @@ export default function Nav() {
         <ul className="outline-pill hidden h-[52px] items-center gap-5 px-5 lg:flex xl:gap-[30px] xl:px-[22px]">
           {links.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="nav-link">
+              <a
+                href={l.href}
+                aria-current={active === l.label ? "page" : undefined}
+                className={active === l.label ? "nav-link !text-gold-500" : "nav-link"}
+              >
                 {l.label}
               </a>
             </li>
@@ -102,7 +106,9 @@ export default function Nav() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="block rounded-xl px-4 py-3 text-[16px] font-semibold text-white/90 transition hover:bg-white/10 hover:text-white"
+                  className={`block rounded-xl px-4 py-3 text-[16px] font-semibold transition hover:bg-white/10 hover:text-white ${
+                    active === l.label ? "text-gold-500" : "text-white/90"
+                  }`}
                   onClick={() => setOpen(false)}
                 >
                   {l.label}

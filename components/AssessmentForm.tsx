@@ -2,13 +2,33 @@
 import { useState } from "react";
 import { ArrowRight, Chevron } from "./Icons";
 
-export default function AssessmentForm({ offset = false }: { offset?: boolean }) {
+const copy = {
+  home: {
+    title: "Tell us where your business stands.",
+    body: "Two short steps. We use your answers to identify the relevant services and next steps.",
+  },
+  formation: {
+    title: "Tell us about your business setup.",
+    body: "Two short steps. We use your answers to identify the relevant formation and licensing services and next steps.",
+  },
+};
+
+export default function AssessmentForm({
+  offset = false,
+  variant = "home",
+}: {
+  offset?: boolean;
+  variant?: "home" | "formation";
+}) {
   const [data, setData] = useState({
     name: "",
     email: "",
     phone: "",
     company: "",
+    jurisdiction: "",
   });
+  const formation = variant === "formation";
+  const inputBg = formation ? "bg-white" : "bg-neutral-50";
 
   return (
     <div className="relative w-full max-w-[470px]">
@@ -42,11 +62,9 @@ export default function AssessmentForm({ offset = false }: { offset?: boolean })
         </div>
 
         <h3 className="relative mb-2 text-[24px] font-semibold leading-[1.18] tracking-[-0.36px] text-blue-950 sm:text-[30px]">
-          Tell us where your business stands.
+          {copy[variant].title}
         </h3>
-        <p className="relative mb-5 text-[14px] leading-[1.52] text-neutral-600">
-          Two short steps. We use your answers to identify the relevant services and next steps.
-        </p>
+        <p className="relative mb-5 text-[14px] leading-[1.52] text-neutral-600">{copy[variant].body}</p>
 
         <div className="relative space-y-4 sm:space-y-[18px]">
           <Field
@@ -55,6 +73,7 @@ export default function AssessmentForm({ offset = false }: { offset?: boolean })
             value={data.name}
             onChange={(v) => setData({ ...data, name: v })}
             autoComplete="name"
+            bg={inputBg}
           />
           <Field
             label="Work email"
@@ -63,6 +82,7 @@ export default function AssessmentForm({ offset = false }: { offset?: boolean })
             value={data.email}
             onChange={(v) => setData({ ...data, email: v })}
             autoComplete="email"
+            bg={inputBg}
           />
 
           <div>
@@ -70,13 +90,13 @@ export default function AssessmentForm({ offset = false }: { offset?: boolean })
               Phone number
             </label>
             <div className="flex items-stretch overflow-hidden rounded-xl border border-neutral-300">
-              <div className="flex shrink-0 items-center gap-1.5 border-r border-neutral-300 bg-gold-100 px-2.5 sm:gap-2 sm:px-4">
+              <div className={`flex shrink-0 items-center gap-1.5 border-r border-neutral-300 ${formation ? "bg-white" : "bg-gold-100"} px-2.5 sm:gap-2 sm:px-4`}>
                 <span className="text-[14px] text-blue-950 sm:text-[16px]">+971</span>
                 <Chevron className="h-3 w-3 text-blue-950/70" />
               </div>
               <input
                 id="phone-number"
-                className="min-w-0 flex-1 bg-neutral-50 px-3 py-[14px] text-[16px] text-blue-950 outline-none placeholder:text-neutral-600 sm:px-4"
+                className={`min-w-0 flex-1 ${inputBg} px-3 py-[14px] text-[16px] text-blue-950 outline-none placeholder:text-neutral-600 sm:px-4`}
                 placeholder="50 123 4567"
                 inputMode="tel"
                 autoComplete="tel-national"
@@ -86,13 +106,41 @@ export default function AssessmentForm({ offset = false }: { offset?: boolean })
             </div>
           </div>
 
-          <Field
-            label="Company name"
-            placeholder="Company or proposed trade name"
-            value={data.company}
-            onChange={(v) => setData({ ...data, company: v })}
-            autoComplete="organization"
-          />
+          {formation ? (
+            <div>
+              <label htmlFor="preferred-jurisdiction" className="mb-[7px] block text-[13px] font-medium text-blue-900">
+                Preferred jurisdiction
+              </label>
+              <div className="relative">
+                <select
+                  id="preferred-jurisdiction"
+                  value={data.jurisdiction}
+                  onChange={(e) => setData({ ...data, jurisdiction: e.target.value })}
+                  className={`w-full appearance-none rounded-xl border border-neutral-300 bg-white py-[14px] pl-3 pr-10 text-[16px] leading-[1.6] outline-none focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 sm:pl-4 ${
+                    data.jurisdiction ? "text-blue-950" : "text-neutral-600"
+                  }`}
+                >
+                  <option value="" disabled>
+                    Mainland, Free Zone, Offshore or not sure
+                  </option>
+                  <option value="mainland">Mainland</option>
+                  <option value="free-zone">Free Zone</option>
+                  <option value="offshore">Offshore</option>
+                  <option value="not-sure">Not sure yet</option>
+                </select>
+                <Chevron className="pointer-events-none absolute right-4 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-blue-950/70" />
+              </div>
+            </div>
+          ) : (
+            <Field
+              label="Company name"
+              placeholder="Company or proposed trade name"
+              value={data.company}
+              onChange={(v) => setData({ ...data, company: v })}
+              autoComplete="organization"
+              bg={inputBg}
+            />
+          )}
 
           <button
             type="submit"
@@ -116,6 +164,7 @@ function Field({
   onChange,
   type = "text",
   autoComplete,
+  bg = "bg-neutral-50",
 }: {
   label: string;
   placeholder: string;
@@ -123,6 +172,7 @@ function Field({
   onChange: (v: string) => void;
   type?: string;
   autoComplete?: string;
+  bg?: string;
 }) {
   const id = label.toLowerCase().replace(/\s+/g, "-");
   return (
@@ -137,7 +187,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        className="w-full rounded-xl border border-neutral-300 bg-neutral-50 px-3 py-[14px] text-[16px] leading-[1.6] text-blue-950 outline-none placeholder:text-neutral-600 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 sm:px-4"
+        className={`w-full rounded-xl border border-neutral-300 ${bg} px-3 py-[14px] text-[16px] leading-[1.6] text-blue-950 outline-none placeholder:text-neutral-600 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 sm:px-4`}
       />
     </div>
   );

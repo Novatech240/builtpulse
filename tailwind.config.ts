@@ -15,9 +15,11 @@ const config: Config = {
           600: "#4A62A6",
         },
         gold: {
+          400: "#FED834",
           500: "#E1B427",
           300: "#EED37C",
           100: "#FBF3DA",
+          50: "#FFF4C2",
         },
         neutral: {
           0: "#FFFFFF",
