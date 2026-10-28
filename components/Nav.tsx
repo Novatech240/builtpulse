@@ -1,19 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowRight, Chevron } from "./Icons";
-
-const serviceLinks = [
-  {
-    label: "Business Formation & Licensing",
-    desc: "Structure, trade licence, renewals and closure",
-    href: "/services/business-formation-licensing",
-  },
-];
+import { ArrowRight } from "./Icons";
 
 const links = [
-  { label: "Services", href: "/#services" },
+  { label: "Services", href: "/services/business-formation-licensing" },
   { label: "Lifecycle", href: "/#lifecycle" },
   { label: "Insights", href: "/#insights" },
   { label: "FAQ", href: "#faq" },
@@ -22,8 +14,6 @@ const links = [
 
 export default function Nav({ active }: { active?: string }) {
   const [open, setOpen] = useState(false);
-  const [svcOpen, setSvcOpen] = useState(false);
-  const svcRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -34,20 +24,10 @@ export default function Nav({ active }: { active?: string }) {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpen(false);
-        setSvcOpen(false);
-      }
-    };
-    const onClick = (e: MouseEvent) => {
-      if (!svcRef.current?.contains(e.target as Node)) setSvcOpen(false);
+      if (e.key === "Escape") setOpen(false);
     };
     window.addEventListener("keydown", onKey);
-    document.addEventListener("click", onClick);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.removeEventListener("click", onClick);
-    };
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   return (
@@ -66,62 +46,17 @@ export default function Nav({ active }: { active?: string }) {
         </a>
 
         <ul className="outline-pill hidden h-[52px] items-center gap-5 px-5 lg:flex xl:gap-[30px] xl:px-[22px]">
-          {links.map((l) =>
-            l.label === "Services" ? (
-              <li
-                key={l.href}
-                ref={svcRef}
-                className="relative"
-                onMouseEnter={() => setSvcOpen(true)}
-                onMouseLeave={() => setSvcOpen(false)}
+          {links.map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                aria-current={active === l.label ? "page" : undefined}
+                className={active === l.label ? "nav-link !text-gold-500" : "nav-link"}
               >
-                <button
-                  type="button"
-                  aria-expanded={svcOpen}
-                  aria-controls="services-menu"
-                  onClick={() => setSvcOpen((v) => !v)}
-                  className={`flex items-center gap-1.5 ${active === l.label ? "nav-link !text-gold-500" : "nav-link"}`}
-                >
-                  {l.label}
-                  <Chevron className={`h-3 w-3 transition ${svcOpen ? "rotate-180" : ""}`} />
-                </button>
-                {svcOpen && (
-                  /* pt bridges the gap so hover isn't lost moving into the panel */
-                  <div id="services-menu" className="absolute left-1/2 top-full w-[340px] -translate-x-1/2 pt-[22px]">
-                    <div className="rounded-[20px] border border-white/15 bg-blue-950 p-2 shadow-card">
-                      {serviceLinks.map((s) => (
-                        <a
-                          key={s.href}
-                          href={s.href}
-                          className="block rounded-[14px] px-4 py-3 transition hover:bg-white/[0.07]"
-                        >
-                          <span className="block text-[15px] font-semibold text-white">{s.label}</span>
-                          <span className="mt-0.5 block text-[13px] text-white/60">{s.desc}</span>
-                        </a>
-                      ))}
-                      <a
-                        href="/#services"
-                        className="mt-1 flex items-center justify-between rounded-[14px] border-t border-white/10 px-4 py-3 text-[14px] font-semibold text-gold-500 transition hover:bg-white/[0.07]"
-                      >
-                        View all 12 services
-                        <ArrowRight className="h-4 w-4" />
-                      </a>
-                    </div>
-                  </div>
-                )}
-              </li>
-            ) : (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  aria-current={active === l.label ? "page" : undefined}
-                  className={active === l.label ? "nav-link !text-gold-500" : "nav-link"}
-                >
-                  {l.label}
-                </a>
-              </li>
-            )
-          )}
+                {l.label}
+              </a>
+            </li>
+          ))}
         </ul>
 
         <div className="flex items-center gap-2 sm:gap-2.5">
@@ -178,21 +113,6 @@ export default function Nav({ active }: { active?: string }) {
                 >
                   {l.label}
                 </a>
-                {l.label === "Services" && (
-                  <ul className="mb-1 ml-4 border-l border-white/15 pl-2">
-                    {serviceLinks.map((s) => (
-                      <li key={s.href}>
-                        <a
-                          href={s.href}
-                          className="block rounded-xl px-4 py-2.5 text-[15px] font-medium text-white/80 transition hover:bg-white/10 hover:text-white"
-                          onClick={() => setOpen(false)}
-                        >
-                          {s.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
               </li>
             ))}
           </ul>
