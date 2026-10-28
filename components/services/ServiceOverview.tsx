@@ -40,7 +40,7 @@ export default function ServiceOverview({ onPick }: { onPick: (j: Jurisdiction) 
     <section className="pb-20 pt-20 sm:pt-24 md:pb-28 lg:pb-[140px] lg:pt-[176px]">
       <div className="wrap grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,539px)_minmax(0,1fr)] lg:gap-[72px] xl:gap-[89px]">
         {/* Visual + jurisdiction chooser */}
-        <div className="relative lg:pt-7">
+        <div className="relative lg:self-start lg:pt-7">
           <ImagePlaceholder
             caption="Builtpulse consultant walking a founder through company formation paperwork"
             className="h-[420px] sm:h-[520px] lg:h-[619px]"
@@ -77,7 +77,7 @@ export default function ServiceOverview({ onPick }: { onPick: (j: Jurisdiction) 
         {/* Copy + features */}
         <div>
           <Eyebrow>The service</Eyebrow>
-          <h2 className="mt-5 text-balance text-[34px] font-semibold leading-[1.1] tracking-[-0.025em] text-blue-950 sm:text-[42px] lg:text-[48px]">
+          <h2 className="mt-5 text-[34px] font-semibold leading-[1.1] tracking-[-0.025em] text-blue-950 sm:text-[42px] lg:text-[48px]">
             From trade name to trade licence — one structured process.
           </h2>
           <p className="mt-6 max-w-[620px] text-[16px] leading-[1.65] text-neutral-600 lg:text-[17px]">
