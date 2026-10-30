@@ -29,7 +29,7 @@ const taxRegulatoryCompliance: ServiceContent = {
 
   form: {
     title: "Check Your Compliance Status",
-    body: "Two quick steps. We'll tell you what you need to register for and by when, within [one working day].",
+    body: "Two quick steps. We'll tell you what you need to register for and by when, within one working day.",
     submit: "Check My Status",
     field: "company",
   },

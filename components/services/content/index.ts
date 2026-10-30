@@ -14,8 +14,8 @@ import legalServices from "./legal-services";
 
 /**
  * Content for every built service page, keyed by URL slug.
- * To add a page: create `content/<slug>.tsx`, register it here and set
- * `live: true` for it in `../directory.ts`.
+ * To add a page: create `content/<slug>.tsx`, register it here and add it to
+ * `../directory.ts`.
  */
 export const services: Record<string, ServiceContent> = {
   [formationLicensing.slug]: formationLicensing,

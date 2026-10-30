@@ -11,6 +11,14 @@ const serviceLinks = [
   "Immigration & PRO",
 ];
 
+/** An icon only shows once its profile URL is filled in. */
+const socials = [
+  { Icon: LinkedIn, label: "LinkedIn", href: "" },
+  { Icon: Facebook, label: "Facebook", href: "" },
+  { Icon: YouTube, label: "YouTube", href: "" },
+  { Icon: Instagram, label: "Instagram", href: "" },
+].filter((s) => s.href);
+
 export default function Footer() {
   return (
     <footer id="contact" className="section py-2 sm:py-3 md:py-4">
@@ -83,16 +91,11 @@ export default function Footer() {
             <p className="mt-2 max-w-[290px] text-[15px] leading-[1.6] text-white/80">
               From business incubation and company formation to compliance and growth, BuiltPulse provides the services and support to build your business in Dubai.
             </p>
-            <div className="mt-6 flex items-center gap-2.5">
-              {[
-                { Icon: LinkedIn, label: "LinkedIn" },
-                { Icon: Facebook, label: "Facebook" },
-                { Icon: YouTube, label: "YouTube" },
-                { Icon: Instagram, label: "Instagram" },
-              ].map(({ Icon, label }) => (
+            <div className={socials.length ? "mt-6 flex items-center gap-2.5" : "hidden"}>
+              {socials.map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
                   aria-label={label}
                   className="grid h-[42px] w-[42px] place-items-center rounded-full border border-white/20 bg-white/[0.04] text-white transition hover:bg-white/15"
                 >
@@ -126,7 +129,9 @@ export default function Footer() {
               </li>
             </ul>
             <a
-              href="#"
+              href="https://www.google.com/maps/search/?api=1&query=Ibis+Hotel+Al+Rigga+Road+Deira+Dubai"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-5 inline-flex h-[34px] items-center gap-1.5 rounded-full border border-gold-500/60 px-4 text-[13px] font-semibold text-white transition hover:bg-gold-500/10"
             >
               Open in Maps
@@ -175,11 +180,6 @@ export default function Footer() {
           </svg>
           <div className="panel-inner relative flex flex-col items-start justify-between gap-3 py-5 md:flex-row md:items-center lg:py-6">
             <p className="text-[13px] text-white/60">© 2026 BuiltPulse. All rights reserved.</p>
-            <div className="flex flex-wrap items-center gap-x-7 gap-y-2 text-[13px] text-white/70">
-              <a href="#" className="hover:text-white">Privacy Policy</a>
-              <a href="#" className="hover:text-white">Terms of Use</a>
-              <a href="#" className="hover:text-white">Cookie Policy</a>
-            </div>
           </div>
         </div>
       </div>

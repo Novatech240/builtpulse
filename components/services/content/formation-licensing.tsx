@@ -41,7 +41,7 @@ const formationLicensing: ServiceContent = {
 
   form: {
     title: "Get your company setup plan",
-    body: "Two quick steps. We'll recommend a jurisdiction and your next steps within [one working day].",
+    body: "Two quick steps. We'll recommend a jurisdiction and your next steps within one working day.",
     submit: "Get my plan",
     field: "jurisdiction",
   },
@@ -205,7 +205,7 @@ const formationLicensing: ServiceContent = {
       items: [
         "Your business activity, described in one or two sentences",
         "Who the shareholders and managers will be",
-        "Passport copies and proof of address for each shareholder [confirm list]",
+        "Passport copies and proof of address for each shareholder",
         "Two or three trade name options",
         "Your office plan: physical office, flexi-desk or free zone package",
         "How many visas you expect to need in year one",

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ArrowRight } from "./Icons";
 
 const posts = [
   {
@@ -39,10 +38,6 @@ export default function Insights() {
               Insights for building in Dubai.
             </h2>
           </div>
-          <a href="#" className="btn-dark h-[52px] shrink-0 py-0">
-            Explore All Insights
-            <ArrowRight className="h-4 w-4" />
-          </a>
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3 lg:gap-[22px]">
@@ -71,13 +66,6 @@ export default function Insights() {
                 </p>
                 <div className="mt-auto flex items-center justify-between pt-5 text-[13px] text-neutral-600 lg:text-[14px]">
                   <span>{p.meta}</span>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-blue-900 transition group-hover:gap-2.5 lg:text-[15px]"
-                  >
-                    Read article
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
                 </div>
               </div>
             </article>
