@@ -46,7 +46,7 @@ export default function ServicePage({ slug }: { slug: string }) {
         <FAQ
           title={content.faq.title}
           faqs={content.faq.items}
-          intro={content.faq.intro}
+          intro={content.faq.intro ?? null}
           formVariant="service"
           formCopy={content.form}
           className="!pt-0"

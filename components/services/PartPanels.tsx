@@ -2,6 +2,33 @@ import ImagePlaceholder, { Eyebrow } from "./ImagePlaceholder";
 import { ArrowRight } from "../Icons";
 import type { ServiceContent } from "./types";
 
+/** Opens the part's modal when it has one; otherwise the label is a call to action, so it goes to the form. */
+function PartCta({
+  part,
+  onExplore,
+  className,
+}: {
+  part: Pick<ServiceContent["partOne"], "cta" | "modal">;
+  onExplore: () => void;
+  className: string;
+}) {
+  const label = (
+    <>
+      {part.cta}
+      <ArrowRight className="h-4 w-4" />
+    </>
+  );
+  return part.modal ? (
+    <button type="button" onClick={onExplore} className={className}>
+      {label}
+    </button>
+  ) : (
+    <a href="#audit" className={className}>
+      {label}
+    </a>
+  );
+}
+
 export function PartOne({ part, onExplore }: { part: ServiceContent["partOne"]; onExplore: () => void }) {
   return (
     <section className="section">
@@ -28,10 +55,7 @@ export function PartOne({ part, onExplore }: { part: ServiceContent["partOne"]; 
                 </span>
               ))}
             </div>
-            <button type="button" onClick={onExplore} className="btn-primary mt-8 h-[52px] py-0">
-              {part.cta}
-              <ArrowRight className="h-4 w-4" />
-            </button>
+            <PartCta part={part} onExplore={onExplore} className="btn-primary mt-8 h-[52px] py-0" />
           </div>
           <ImagePlaceholder reveal caption={part.imageCaption} className="h-[360px] sm:h-[440px] lg:h-[520px]" />
         </div>
@@ -71,32 +95,41 @@ export function PartTwo({ part, onExplore }: { part: ServiceContent["partTwo"]; 
                   {part.audience}
                 </p>
               )}
-              <button type="button" onClick={onExplore} className="btn-dark mt-7 h-[52px] py-0">
-                {part.cta}
-                <ArrowRight className="h-4 w-4" />
-              </button>
+              <PartCta part={part} onExplore={onExplore} className="btn-dark mt-7 h-[52px] py-0" />
             </div>
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 lg:mt-14 lg:gap-6">
-            {part.cards.map(({ title, desc, audience, includes, Icon }) => (
-              <button
-                key={title}
-                type="button"
-                data-reveal
-                onClick={onExplore}
-                className="group flex flex-col items-start justify-start rounded-[16px] border border-neutral-100 bg-white p-6 text-left transition-[border-color,box-shadow] hover:border-gold-500/50 hover:shadow-soft lg:p-7"
-              >
-                <span className="grid h-[52px] w-[52px] place-items-center rounded-[12px] bg-blue-950 text-gold-500">
-                  <Icon className="h-[22px] w-[22px]" />
-                </span>
-                <p className="mt-5 text-[19px] font-semibold text-blue-950 lg:text-[20px]">{title}</p>
-                <p className="mt-2.5 text-[14px] leading-[1.6] text-neutral-600">{desc}</p>
-                <span className="mt-4 block h-px w-full bg-neutral-100" />
-                <p className="mt-4 text-[13px] leading-[1.55] text-blue-950">{audience}</p>
-                <p className="mt-1.5 text-[13px] leading-[1.55] text-neutral-600">{includes}</p>
-              </button>
-            ))}
+            {part.cards.map(({ title, desc, audience, includes, Icon }) => {
+              const body = (
+                <>
+                  <span className="grid h-[52px] w-[52px] place-items-center rounded-[12px] bg-blue-950 text-gold-500">
+                    <Icon className="h-[22px] w-[22px]" />
+                  </span>
+                  <p className="mt-5 text-[19px] font-semibold text-blue-950 lg:text-[20px]">{title}</p>
+                  <p className="mt-2.5 text-[14px] leading-[1.6] text-neutral-600">{desc}</p>
+                  <span className="mt-4 block h-px w-full bg-neutral-100" />
+                  <p className="mt-4 text-[13px] leading-[1.55] text-blue-950">{audience}</p>
+                  <p className="mt-1.5 text-[13px] leading-[1.55] text-neutral-600">{includes}</p>
+                </>
+              );
+              const card = "flex flex-col items-start justify-start rounded-[16px] border border-neutral-100 bg-white p-6 text-left lg:p-7";
+              return part.modal ? (
+                <button
+                  key={title}
+                  type="button"
+                  data-reveal
+                  onClick={onExplore}
+                  className={`group transition-[border-color,box-shadow] hover:border-gold-500/50 hover:shadow-soft ${card}`}
+                >
+                  {body}
+                </button>
+              ) : (
+                <div key={title} data-reveal className={card}>
+                  {body}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -43,8 +43,8 @@ export default function ServiceModals({
   const jurisdictions = content.overview.jurisdictions;
   return (
     <>
-      <ListModal content={content.partOne.modal} open={open === "part-one"} onClose={onClose} />
-      <ListModal content={content.partTwo.modal} open={open === "part-two"} onClose={onClose} />
+      {content.partOne.modal && <ListModal content={content.partOne.modal} open={open === "part-one"} onClose={onClose} />}
+      {content.partTwo.modal && <ListModal content={content.partTwo.modal} open={open === "part-two"} onClose={onClose} />}
 
       {jurisdictions &&
         (Object.keys(jurisdictions.guides) as Jurisdiction[]).map((key) => {

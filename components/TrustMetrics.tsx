@@ -33,7 +33,7 @@ export default function TrustMetrics({ size = "md", caption = true }: { size?: "
       </div>
       {caption && (
         <p className="mx-auto mt-4 max-w-[1248px] px-1 text-[12px] text-neutral-600 sm:mt-6 sm:text-[13px]">
-          Demonstration values only — not verified Builtpulse statistics. Replace before launch.
+          Demonstration values only — not verified BuiltPulse statistics. Replace before launch.
         </p>
       )}
     </section>

@@ -1,13 +1,21 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { ArrowRight, Chevron } from "./Icons";
 
+export type FormSelect = { label: string; placeholder?: string; options: string[] };
+
 export type FormCopy = {
+  /** Label above the title. Defaults to "Free business assessment". */
+  eyebrow?: string;
   title: string;
   body: string;
   submit?: string;
-  /** Fourth field: company name, or a jurisdiction picker for setup services. */
-  field?: "company" | "jurisdiction";
+  /** Fourth field: company name, a jurisdiction picker for setup services, or nothing. */
+  field?: "company" | "jurisdiction" | "none";
+  companyLabel?: string;
+  companyPlaceholder?: string;
+  /** Extra dropdowns, shown after the fourth field. */
+  selects?: FormSelect[];
 };
 
 const homeCopy: FormCopy = {
@@ -36,6 +44,9 @@ export default function AssessmentForm({
     company: "",
     jurisdiction: "",
   });
+  const [picks, setPicks] = useState<Record<string, string>>({});
+  // The form can appear twice on a page, so ids must be unique or labels focus the wrong copy.
+  const uid = useId();
   const service = variant === "service";
   const inputBg = service ? "bg-white" : "bg-neutral-50";
   const jurisdictionField = copy.field === "jurisdiction";
@@ -64,7 +75,7 @@ export default function AssessmentForm({
 
         <div className="relative mb-4 flex flex-wrap items-center justify-between gap-2 sm:mb-[18px]">
           <span className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-gold-500 sm:text-[11px]">
-            Free business assessment
+            {copy.eyebrow ?? "Free business assessment"}
           </span>
           <div className="flex items-center gap-2">
             <span className="font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-neutral-600 sm:text-[11px]">
@@ -88,6 +99,7 @@ export default function AssessmentForm({
             onChange={(v) => setData({ ...data, name: v })}
             autoComplete="name"
             bg={inputBg}
+            uid={uid}
           />
           <Field
             label="Work email"
@@ -97,10 +109,11 @@ export default function AssessmentForm({
             onChange={(v) => setData({ ...data, email: v })}
             autoComplete="email"
             bg={inputBg}
+            uid={uid}
           />
 
           <div>
-            <label htmlFor="phone-number" className="mb-[7px] block text-[13px] font-medium text-blue-900">
+            <label htmlFor={`${uid}-phone`} className="mb-[7px] block text-[13px] font-medium text-blue-900">
               Phone number
             </label>
             <div className="flex items-stretch overflow-hidden rounded-xl border border-neutral-300">
@@ -109,7 +122,7 @@ export default function AssessmentForm({
                 <Chevron className="h-3 w-3 text-blue-950/70" />
               </div>
               <input
-                id="phone-number"
+                id={`${uid}-phone`}
                 className={`min-w-0 flex-1 ${inputBg} px-3 py-[14px] text-[16px] text-blue-950 outline-none placeholder:text-neutral-600 sm:px-4`}
                 placeholder="50 123 4567"
                 inputMode="tel"
@@ -122,12 +135,12 @@ export default function AssessmentForm({
 
           {jurisdictionField ? (
             <div>
-              <label htmlFor="preferred-jurisdiction" className="mb-[7px] block text-[13px] font-medium text-blue-900">
+              <label htmlFor={`${uid}-jurisdiction`} className="mb-[7px] block text-[13px] font-medium text-blue-900">
                 Preferred jurisdiction
               </label>
               <div className="relative">
                 <select
-                  id="preferred-jurisdiction"
+                  id={`${uid}-jurisdiction`}
                   value={data.jurisdiction}
                   onChange={(e) => setData({ ...data, jurisdiction: e.target.value })}
                   className={`w-full appearance-none rounded-xl border border-neutral-300 bg-white py-[14px] pl-3 pr-10 text-[16px] leading-[1.6] outline-none focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 sm:pl-4 ${
@@ -145,16 +158,49 @@ export default function AssessmentForm({
                 <Chevron className="pointer-events-none absolute right-4 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-blue-950/70" />
               </div>
             </div>
-          ) : (
+          ) : copy.field === "none" ? null : (
             <Field
-              label="Company name"
-              placeholder="Company or proposed trade name"
+              label={copy.companyLabel ?? "Company name"}
+              placeholder={copy.companyPlaceholder ?? "Company or proposed trade name"}
               value={data.company}
               onChange={(v) => setData({ ...data, company: v })}
               autoComplete="organization"
               bg={inputBg}
+              uid={uid}
             />
           )}
+
+          {copy.selects?.map((s) => {
+            const id = `${uid}-${s.label.toLowerCase().replace(/\s+/g, "-")}`;
+            const value = picks[s.label] ?? "";
+            return (
+              <div key={s.label}>
+                <label htmlFor={id} className="mb-[7px] block text-[13px] font-medium text-blue-900">
+                  {s.label}
+                </label>
+                <div className="relative">
+                  <select
+                    id={id}
+                    value={value}
+                    onChange={(e) => setPicks({ ...picks, [s.label]: e.target.value })}
+                    className={`w-full appearance-none rounded-xl border border-neutral-300 bg-white py-[14px] pl-3 pr-10 text-[16px] leading-[1.6] outline-none focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 sm:pl-4 ${
+                      value ? "text-blue-950" : "text-neutral-600"
+                    }`}
+                  >
+                    <option value="" disabled>
+                      {s.placeholder ?? "Select an option"}
+                    </option>
+                    {s.options.map((o) => (
+                      <option key={o} value={o}>
+                        {o}
+                      </option>
+                    ))}
+                  </select>
+                  <Chevron className="pointer-events-none absolute right-4 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-blue-950/70" />
+                </div>
+              </div>
+            );
+          })}
 
           <button
             type="submit"
@@ -179,6 +225,7 @@ function Field({
   type = "text",
   autoComplete,
   bg = "bg-neutral-50",
+  uid,
 }: {
   label: string;
   placeholder: string;
@@ -187,8 +234,9 @@ function Field({
   type?: string;
   autoComplete?: string;
   bg?: string;
+  uid: string;
 }) {
-  const id = label.toLowerCase().replace(/\s+/g, "-");
+  const id = `${uid}-${label.toLowerCase().replace(/\s+/g, "-")}`;
   return (
     <div>
       <label htmlFor={id} className="mb-[7px] block text-[13px] font-medium text-blue-900">

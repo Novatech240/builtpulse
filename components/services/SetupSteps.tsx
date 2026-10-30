@@ -11,7 +11,9 @@ function StepText({ step, i, align = "left" }: { step: Step; i: number; align?: 
         Step {String(i + 1).padStart(2, "0")}
       </p>
       <p className="mt-1.5 text-[18px] font-semibold leading-tight text-blue-950">{step.title}</p>
-      <p className={`mt-1.5 max-w-[340px] text-[14px] leading-[1.5] text-neutral-600 ${right ? "ml-auto" : ""}`}>{step.desc}</p>
+      {step.desc && (
+        <p className={`mt-1.5 max-w-[340px] text-[14px] leading-[1.5] text-neutral-600 ${right ? "ml-auto" : ""}`}>{step.desc}</p>
+      )}
       <dl className={`mt-2.5 max-w-[340px] space-y-1 text-[13px] leading-[1.45] ${right ? "ml-auto" : ""}`}>
         <div>
           <dt className="inline font-semibold text-blue-950">You: </dt>
@@ -95,7 +97,9 @@ export default function SetupSteps({ steps }: { steps: ServiceContent["steps"] }
               <h2 className="mt-5 text-balance text-[34px] font-semibold leading-[1.08] tracking-[-0.03em] text-blue-950 sm:text-[42px] lg:text-[46px]">
                 {steps.headline}
               </h2>
-              <p className="mt-5 max-w-[660px] text-[16px] leading-[1.65] text-neutral-600 lg:text-[17px]">{steps.body}</p>
+              {steps.body && (
+                <p className="mt-5 max-w-[660px] text-[16px] leading-[1.65] text-neutral-600 lg:text-[17px]">{steps.body}</p>
+              )}
             </div>
 
             {steps.checklist && (
@@ -126,6 +130,20 @@ export default function SetupSteps({ steps }: { steps: ServiceContent["steps"] }
                 <Vertical steps={steps.items} />
               </div>
             </div>
+
+            {steps.mistakes && (
+              <div data-reveal className="mt-10 rounded-[20px] border border-neutral-100 bg-white p-6 sm:p-7">
+                <p className="text-[17px] font-semibold text-blue-950">{steps.mistakes.title}</p>
+                <ul className="mt-4 space-y-3">
+                  {steps.mistakes.items.map((it) => (
+                    <li key={it} className="flex gap-3 text-[14px] leading-[1.5] text-neutral-600">
+                      <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" />
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -39,12 +39,16 @@ export type ServiceContent = {
   metadata: { title: string; description: string };
 
   hero: {
+    /** Breadcrumb pill. Defaults to "Services · {name}". */
+    eyebrow?: string;
     title: ReactNode;
     /** "lg" for short titles (2–3 words per line), "md" for sentence-length titles. */
     titleSize?: "lg" | "md";
     body: string;
     primaryCta: string;
     secondaryCta: string;
+    /** Where the secondary button scrolls to. Defaults to the steps section. */
+    secondaryHref?: "#how-it-works" | "#overview";
   };
 
   form: FormCopy;
@@ -69,16 +73,19 @@ export type ServiceContent = {
     tags: string[];
     cta: string;
     imageCaption: string;
-    modal: ServiceModalContent;
+    /** Opened by the button. Without one, the button goes to the assessment form. */
+    modal?: ServiceModalContent;
   };
 
   steps: {
     eyebrow: string;
     headline: string;
-    body: string;
-    checklist?: { title: string; items: string[]; outro: string };
+    body?: string;
+    checklist?: { title: string; items: string[]; outro?: string };
     intro?: string;
-    items: { title: string; desc: string; you: string; we: string }[];
+    items: { title: string; desc?: string; you: string; we: string }[];
+    /** Shown after the steps. */
+    mistakes?: { title: string; items: string[] };
     imageCaption: string;
   };
 
@@ -98,12 +105,14 @@ export type ServiceContent = {
     cta: string;
     imageCaption: string;
     cards: { title: string; desc: string; audience: string; includes: string; Icon: Icon }[];
-    modal: ServiceModalContent;
+    /** Opened by the button and cards. Without one, the button goes to the assessment form. */
+    modal?: ServiceModalContent;
   };
 
   testimonials: { title: string; body: string };
 
   cta: { title: string; body: string; button: string };
 
-  faq: { title: string; intro: string; items: FaqItem[] };
+  /** Falls back to the standard "Frequently asked questions" title when none is given. */
+  faq: { title?: string; intro?: string; items: FaqItem[] };
 };

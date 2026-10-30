@@ -176,7 +176,7 @@ export default function Nav({ active }: { active?: string }) {
                 {l.label === "Services" && (
                   <ul className="mb-1 ml-4 border-l border-white/15 pl-2">
                     {serviceDirectory.map((s) => (
-                      <li key={s.slug} onClick={() => s.live && setOpen(false)}>
+                      <li key={s.slug} onClick={() => setOpen(false)}>
                         <ServiceLink service={s} current={pathname === serviceHref(s.slug)} compact />
                       </li>
                     ))}
@@ -209,16 +209,6 @@ function ServiceLink({
   compact?: boolean;
 }) {
   const pad = compact ? "px-3 py-2 text-[14px]" : "px-4 py-2.5 text-[14px]";
-  if (!service.live) {
-    return (
-      <span aria-disabled="true" className={`flex items-center justify-between gap-3 rounded-[12px] font-medium text-white/40 ${pad}`}>
-        {service.label}
-        <span className="shrink-0 rounded-full border border-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/45">
-          Soon
-        </span>
-      </span>
-    );
-  }
   return (
     <a
       href={serviceHref(service.slug)}

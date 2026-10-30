@@ -43,7 +43,8 @@ export default function FAQ({
 }: {
   title?: ReactNode;
   faqs?: FaqItem[];
-  intro?: string;
+  /** Pass null for no intro paragraph. */
+  intro?: string | null;
   formVariant?: "home" | "service";
   formCopy?: FormCopy;
   className?: string;
@@ -66,9 +67,11 @@ export default function FAQ({
             <h2 data-reveal className="h2-light mt-5 text-balance text-white md:mt-6">
               {title}
             </h2>
-            <p data-reveal className="mt-5 max-w-[660px] text-[15px] leading-[1.65] text-white/70 sm:text-[16px]">
-              {intro}
-            </p>
+            {intro && (
+              <p data-reveal className="mt-5 max-w-[660px] text-[15px] leading-[1.65] text-white/70 sm:text-[16px]">
+                {intro}
+              </p>
+            )}
 
             <div className="mt-9 flex flex-col gap-3">
               {faqs.map((f, i) => {
