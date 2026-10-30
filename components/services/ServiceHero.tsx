@@ -21,6 +21,8 @@ export default function ServiceHero({
   form: FormCopy;
   preset: FormPreset;
 }) {
+  const crumbs = (hero.eyebrow ?? `Services · ${name}`).split(" · ");
+
   return (
     <section className="relative">
       <div className="relative w-full overflow-hidden rounded-b-[22px] bg-[linear-gradient(155deg,#0b1332_0%,#121f4b_50%,#1f2c62_100%)] sm:rounded-b-[28px] md:rounded-b-[32px] lg:rounded-b-[40px]">
@@ -37,9 +39,12 @@ export default function ServiceHero({
             <span data-hero className="outline-pill inline-flex h-9 w-fit max-w-full items-center gap-2.5 pl-3.5 pr-4">
               <span className="h-2 w-2 shrink-0 rounded-full bg-gold-500 shadow-[0_0_12px_rgba(225,180,39,0.6)]" />
               <span className="truncate text-[12px] font-medium sm:text-[13px]">
-                <a href="/#services" className="hover:text-gold-300">Services</a>
-                <span className="mx-1.5 text-white/60">·</span>
-                {name}
+                {crumbs.map((c, i) => (
+                  <span key={c}>
+                    {i > 0 && <span className="mx-1.5 text-white/60">·</span>}
+                    {c === "Services" ? <a href="/#services" className="hover:text-gold-300">Services</a> : c}
+                  </span>
+                ))}
               </span>
             </span>
 
@@ -71,7 +76,7 @@ export default function ServiceHero({
                 {hero.primaryCta}
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <a href="#how-it-works" className="inline-flex h-[52px] items-center justify-center rounded-full border-[1.2px] border-white/90 px-[26px] text-[15px] font-semibold text-white transition hover:bg-white/10">
+              <a href={hero.secondaryHref ?? "#how-it-works"} className="inline-flex h-[52px] items-center justify-center rounded-full border-[1.2px] border-white/90 px-[26px] text-[15px] font-semibold text-white transition hover:bg-white/10">
                 {hero.secondaryCta}
               </a>
             </div>
