@@ -195,6 +195,9 @@ const hrefs: Record<string, string> = {
   FAQ: "#faq",
   "Formation & Licensing": "/services/business-formation-licensing",
   "Tax & Compliance": "/services/tax-regulatory-compliance",
+  "Consulting & Structuring": "/services/business-investment-consulting",
+  "Marketing & Events": "/services/marketing-events",
+  "Immigration & PRO": "/services/immigration-pro-services",
 };
 
 function FooterCol({ title, items, viewAll = false }: { title: string; items: string[]; viewAll?: boolean }) {

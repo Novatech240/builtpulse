@@ -198,7 +198,7 @@ export const Mail = (p: P) => (
 
 export const MapPin = (p: P) => (
   <svg {...base} {...p}>
-    <path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.500C5 14.8 12 21 12 21Z" />
+    <path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z" />
     <circle cx="12" cy="9.5" r="2.5" />
   </svg>
 );
@@ -206,7 +206,7 @@ export const MapPin = (p: P) => (
 export const Chat = (p: P) => (
   <svg {...base} {...p}>
     <path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1Z" />
-    <path d="M8 10h8M8 13.500h5" />
+    <path d="M8 10h8M8 13.5h5" />
   </svg>
 );
 
@@ -215,20 +215,20 @@ export const Share = (p: P) => (
     <circle cx="18" cy="5.5" r="2.5" />
     <circle cx="6" cy="12" r="2.5" />
     <circle cx="18" cy="18.5" r="2.5" />
-    <path d="m8.3 10.8 7.4-4.100M8.3 13.200l7.4 4.1" />
+    <path d="m8.3 10.8 7.4-4.1M8.3 13.2l7.4 4.1" />
   </svg>
 );
 
 export const Megaphone = (p: P) => (
   <svg {...base} {...p}>
     <path d="M4 10v4l3 .5L19 19V5L7 9.5 4 10ZM8 15l1.5 5h3L11 16" />
-    <path d="M21.5 10.500v3" />
+    <path d="M21.5 10.5v3" />
   </svg>
 );
 
 export const Sparkle = (p: P) => (
   <svg {...base} {...p}>
-    <path d="M12 3.5 14 10l6.5 2-6.5 2-2 6.5-2-6.500L3.5 12 10 10l2-6.500Z" />
+    <path d="M12 3.5 14 10l6.5 2-6.5 2-2 6.5-2-6.5L3.5 12 10 10l2-6.5Z" />
   </svg>
 );
 
@@ -240,20 +240,20 @@ export const Scale = (p: P) => (
 
 export const Plug = (p: P) => (
   <svg {...base} {...p}>
-    <path d="M9 3v5M15 3v5M6.5 8h11v3a5.5 5.5 0 0 1-11 0V8ZM12 16.500V21" />
+    <path d="M9 3v5M15 3v5M6.5 8h11v3a5.5 5.5 0 0 1-11 0V8ZM12 16.5V21" />
   </svg>
 );
 
 export const Wifi = (p: P) => (
   <svg {...base} {...p}>
-    <path d="M3 9.500a13 13 0 0 1 18 0M6.5 13a8 8 0 0 1 11 0M9.7 16.500a3.5 3.5 0 0 1 4.6 0" />
+    <path d="M3 9.5a13 13 0 0 1 18 0M6.5 13a8 8 0 0 1 11 0M9.7 16.5a3.5 3.5 0 0 1 4.6 0" />
     <circle cx="12" cy="19.5" r=".6" />
   </svg>
 );
 
 export const Chart = (p: P) => (
   <svg {...base} {...p}>
-    <path d="M4 4v16h16M8 15l3.5-4 3 2.500L19 8" />
+    <path d="M4 4v16h16M8 15l3.5-4 3 2.5L19 8" />
   </svg>
 );
 
@@ -266,18 +266,18 @@ export const Clock = (p: P) => (
 
 export const Heart = (p: P) => (
   <svg {...base} {...p}>
-    <path d="M12 20s-8-4.8-8-10.500A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.500C20 15.2 12 20 12 20Z" />
+    <path d="M12 20s-8-4.8-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.5C20 15.2 12 20 12 20Z" />
   </svg>
 );
 
 export const Plane = (p: P) => (
   <svg {...base} {...p}>
-    <path d="M21 3 3 10.500l6.5 3L12.5 20 21 3ZM9.5 13.5 21 3" />
+    <path d="M21 3 3 10.5l6.5 3L12.5 20 21 3ZM9.5 13.5 21 3" />
   </svg>
 );
 
 export const Exit = (p: P) => (
   <svg {...base} {...p}>
-    <path d="M14 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h8M10 12h10M17 8.500l3.5 3.5-3.5 3.5" />
+    <path d="M14 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h8M10 12h10M17 8.5l3.5 3.5-3.5 3.5" />
   </svg>
 );

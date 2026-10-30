@@ -66,6 +66,7 @@ const stages: Stage[] = [
       "Digital footprint",
     ],
     explore: "See Marketing & Events",
+    href: "/services/marketing-events",
   },
   {
     key: "comply",
@@ -83,6 +84,7 @@ const stages: Stage[] = [
       "Policy & governance",
     ],
     explore: "Review Compliance Services",
+    href: "/services/tax-regulatory-compliance",
   },
 ];
 

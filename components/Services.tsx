@@ -66,6 +66,7 @@ const featured: Service[] = [
       "Business exit and succession planning",
     ],
     cta: "Plan Your Next Business Move",
+    href: "/services/business-investment-consulting",
     tone: "blue",
   },
   {
@@ -84,11 +85,12 @@ const featured: Service[] = [
       "Business networking and promotional events",
     ],
     cta: "Build Your Brand and Reach the Right Audience",
+    href: "/services/marketing-events",
     tone: "light",
   },
 ];
 
-type MoreService = { n: string; title: string; desc: string; bullets: string[]; cta: string };
+type MoreService = { n: string; title: string; desc: string; bullets: string[]; cta: string; href: string };
 
 const more: MoreService[] = [
   {
@@ -105,6 +107,7 @@ const more: MoreService[] = [
       "Typing, document clearing, and government liaison",
     ],
     cta: "Speak to a PRO Specialist",
+    href: "/services/immigration-pro-services",
   },
   {
     n: "06",
@@ -117,6 +120,7 @@ const more: MoreService[] = [
       "Monthly or quarterly accounting and bookkeeping",
     ],
     cta: "Discuss Your Banking & Finance Needs",
+    href: "/services/banking-finance",
   },
   {
     n: "07",
@@ -129,6 +133,7 @@ const more: MoreService[] = [
       "Etisalat and du landline and internet connections",
     ],
     cta: "Find the Right Workspace for Your Business",
+    href: "/services/office-infrastructure",
   },
   {
     n: "08",
@@ -142,6 +147,7 @@ const more: MoreService[] = [
       "WhatsApp Business setup",
     ],
     cta: "Build Your Business\u2019s Digital Presence",
+    href: "/services/digital-footprint",
   },
   {
     n: "09",
@@ -156,6 +162,7 @@ const more: MoreService[] = [
       "Compliance calendar and expiry tracking",
     ],
     cta: "Keep Your Business Compliant and Up to Date",
+    href: "/services/recurring-renewals",
   },
   {
     n: "10",
@@ -169,6 +176,7 @@ const more: MoreService[] = [
       "Notary: Memorandums of Association (MOAs), Powers of Attorney (POAs), and company resolutions",
     ],
     cta: "Get Support with UAE Government Transactions",
+    href: "/services/government-service-centres",
   },
   {
     n: "11",
@@ -183,6 +191,7 @@ const more: MoreService[] = [
       "Labour law compliance advisory",
     ],
     cta: "Build a Stronger HR Foundation for Your Business",
+    href: "/services/hr-services",
   },
   {
     n: "12",
@@ -197,6 +206,7 @@ const more: MoreService[] = [
       "Litigation support through licensed advocates",
     ],
     cta: "Discuss Your Business\u2019s Legal Requirements",
+    href: "/services/legal-services",
   },
 ];
 
@@ -377,7 +387,7 @@ function SmallCard({ service }: { service: MoreService }) {
               <li key={b}>• {b}</li>
             ))}
           </ul>
-          <a href="#audit" className="mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-blue-900 transition hover:text-blue-800">
+          <a href={service.href} className="mt-5 inline-flex items-center gap-2 text-[14px] font-semibold text-blue-900 transition hover:text-blue-800">
             {service.cta}
             <ArrowRight className="h-4 w-4 shrink-0" />
           </a>
